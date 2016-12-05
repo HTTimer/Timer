@@ -37,6 +37,7 @@ var cmd=(function(){
 				fastbrowser - tell the system that you have a fast browser<br>
 				graphic     - switch back to graphic mode<br>
 				help        - show this help<br>
+				login       - Login to use advanced features<br>
 				resetlayout - use when the graphic layout looks messed up<br>
 				savedata    - your last hope when everything crashes<br>
 				selftest    - perform automated tests<br>
@@ -64,6 +65,8 @@ var cmd=(function(){
 			output="Login to use this feature.";
 		if(val=="selffix")
 			output="Login to use this feature.";
+		if(val=="login")
+			output="Wrong username or password.";
 
 		document.getElementById("console-output").innerHTML+=val+"<br>"+output+"<br><span style='color:#22DD22'>HT4.3.0A&gt;</span> ";
 	}

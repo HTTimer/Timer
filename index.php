@@ -7,6 +7,7 @@
 		<script src="js/math.js"></script>
 		<script src="js/html.js"></script>
 		<script src="js/layout.js"></script>
+		<script src="js/translate.js"></script>
 		<script src="js/sessions.js"></script>
 		<script src="js/scramble.js"></script>
 		<script src="js/counter.js"></script>

@@ -75,6 +75,7 @@ var html=(function(){
 	/*
 	 * html:keycode(code)
 	 * @param code String
+	 * @return HTML containg the keycode with a class, which makes it display on pressing alt
 	 */
 	function keycode(code){
 		return '<span class="keycodes">'+code+'</span>'

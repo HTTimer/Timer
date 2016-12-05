@@ -6,6 +6,11 @@ var algSets=(function(){
 	var sets=[];
 	var setprops=[];
 	var currentSet=0;
+	var predefined={
+		//"AlgSetName":"AlgDBSetName,hasAlgDb Algnames CompressedAlgs"
+		//We compress algs to save around 60%, which would be around 200 bytes just for PLL! Compress/Decompress functions are 1Kb total, so worth it for 5+ predefined AlgSets!
+		"PLL":"PLL,1 Aa,Ab,E,F,Ga,Gb,Gc,Gd,H,Ja,Jb,Na,Nb,Ra,Rb,T,Ua,Ub,V,Y,Z YBIBSAJBSC,YCSAIBSAJAZ,ZAJBQAIBRAIBRAJBQY,BJFAIBJBECJBJAIBIA,BJAIRCIBIAJAJCQ,CQcBIBJARGeBIA,AIBJQCJAJBIBICR,CKAKCKCKAKC,VJUEVJUIUFWIU,IAIBFAIBJBECJBJ,AIBIAIBFAIBJBECJBKAJB,BIVKAJUBIVKAJU,UKVKUFVJUIUEW,BKAKBEAIBJBFCJ,AIBJBECJBJAIBF,CIAIBJBJBIB,AJAIAIAJBJC,AKBQAJAJAICQBJAS,EAJBJAIBFAIBJBEAF,BJCIAIBJAIAJAJB"
+	};
 
 	/*
 	 * algSets:Init()
@@ -54,6 +59,9 @@ var algSets=(function(){
 
 		layout.write("ALGSETS",outhtml);
 
+		core.set("algSets",sets);
+		core.set("algProps",setprops);
+
 		return outhtml;
 	}
 
@@ -68,7 +76,8 @@ var algSets=(function(){
 
 	/*
 	 * algSets:removeSet(i)
-	 * @param i int
+	 * @param i Int
+	 * @TODO remove set of i
 	 */
 	function removeSet(i){
 			display();
@@ -93,7 +102,7 @@ var algSets=(function(){
 
 	/*
 	 * algSets:changeName(i)
-	 * @param i int
+	 * @param i Int
 	 */
 	function changeName(i){
 		sets[currentSet][i].name=prompt("",sets[currentSet][i].name);

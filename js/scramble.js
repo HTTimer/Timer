@@ -95,6 +95,9 @@ var scramble=(function(){
 			var relayScramble=[],i,type2=type;
 			for(i=0;i<type2.split(" ")[1].split(",").length;++i){
 				type=type2.split(" ")[1].split(",")[i];
+				//We can only compute one scramble at once with neu, so call it
+				//There can't be infinite recursion as long as no scrambler starts
+				//with "Relay ", as we only call ourselves, if that is the case
 				relayScramble.push(neu());
 			}
 			type=type2;

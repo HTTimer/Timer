@@ -9,27 +9,9 @@ body {
 	overflow: hidden;
 }
 
-table {
-	border-collapse: collapse;
-	text-align: center;
-	box-sizing: content-box;
-	display: table;
-	text-indent: 0;
-	width: 100%;
-}
-
-input {
-	border:1px solid #444444;
-}
-
-.TIMELIST table,.TIMELIST tr,.TIMELIST th,.TIMELIST td {
-	border: 1px solid black;
-}
-
-.STATS table,.STATS tr,.STATS th,.STATS td {
-	border: 1px solid black;
-}
-
+/*
+ * Position of the components
+ */
 .component {
 	position: absolute;
 	margin: 0;
@@ -82,6 +64,17 @@ input {
 	right:0;
 }
 
+/*
+ * Style of things inside the components
+ */
+ .TIMELIST table,.TIMELIST tr,.TIMELIST th,.TIMELIST td {
+ 	border: 1px solid black;
+ }
+
+ .STATS table,.STATS tr,.STATS th,.STATS td {
+ 	border: 1px solid black;
+ }
+
 .bottom-menu {
 	height:25px;
 	width:14.21%;
@@ -101,19 +94,6 @@ input {
 	background-color:#CCC;
 }
 
-.ALGSETS table:nth-child(1) {
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-.ALGSETS tbody tr:nth-child(even), .OPTIONS table.striped tbody tr td:nth-child(even) {
-	background-color: #CCC !important;
-}
-
-.OPTIONS table, .OPTIONS tr, .OPTIONS td {
-	border:1px solid black;
-}
-
 .option:hover {
    background-color: #CCC;
 	 cursor: pointer;
@@ -124,9 +104,6 @@ input {
 	overflow-x: hidden;
 }
 
-.TIMELIST table tbody tr {
-	cursor: pointer;
-}
 
 .SCRAMBLE {
 	font-size:25px;
@@ -162,19 +139,7 @@ input {
 	background-color:white;
 }
 
-.TIME table tbody tr td {
-	font-size: 26px;
-	padding-left: 10px;
-	color: #444444;
-}
 
-.TIME table tbody tr td:hover {
-	color: black;
-}
-
-.TIME table tbody th {
-	font-weight: normal;
-}
 
 .LOGO {
 	font-size:42px;
@@ -264,8 +229,59 @@ input {
 	padding:3px;
 	cursor: none;
 }
+
 /*
- * Progres bar
+ * Styles of tables
+ */
+table {
+	border-collapse: collapse;
+	text-align: center;
+	box-sizing: content-box;
+	display: table;
+	text-indent: 0;
+	width: 100%;
+}
+
+.TIME table tbody tr td {
+	font-size: 26px;
+	padding-left: 10px;
+	color: #444444;
+}
+
+.TIME table tbody tr td:hover {
+	color: black;
+}
+
+.TIME table tbody th {
+	font-weight: normal;
+}
+
+.ALGSETS table:nth-child(1) {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.ALGSETS tbody tr:nth-child(even), .OPTIONS table.striped tbody tr td:nth-child(even) {
+	background-color: #CCC !important;
+}
+
+.OPTIONS table, .OPTIONS tr, .OPTIONS td {
+	border:1px solid black;
+}
+
+.TIMELIST table tbody tr {
+	cursor: pointer;
+}
+
+/*
+ * Styles of input
+ */
+input {
+	border:1px solid #444444;
+}
+
+/*
+ * Progress bar
  * Native support: Firefox 6+, Opera 11+, Chrome, Safari 5.1
  * Polyfill support: Firefox 3.5-5, Opera 10.5-10.63, IE9-10
  * Partial polyfill support: IE8
@@ -326,8 +342,8 @@ progress[role]:after {
 }
 
 /*
-Styling the buttons
-*/
+ * The wondeful buttons
+ */
 button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -416,7 +432,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -425,7 +440,10 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/*Badges, from Bootstrap*/
+/*
+ * Badges
+ * from Bootstrap
+ */
 .badge {
   display: inline-block;
   min-width: 10px;
@@ -454,6 +472,12 @@ a.badge:focus {
   cursor: pointer;
 }
 
+/*
+ * Smaller screens
+ * 1201+: Normal mode
+ * 1000-1200: Reduced width of left and right components, smaller font on middle component
+ * 800-1000: Reduce width again, smaller font on top, middle and bottom components
+ */
 @media (max-width: 1200px) and (min-width:1000px) {
 	.component-left,.component-right {
 		width: 200px;

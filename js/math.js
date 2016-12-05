@@ -177,6 +177,108 @@ var math=(function(){
 		return time+p*1000;
 	}
 
+	/*
+	 * math:compressAlgorithm(alg)
+	 * @param alg String algorithm, moves are spaceseperated
+	 * @returns compressed Algorithm
+	 */
+	function compressAlgorithm(alg){
+		var mapping={
+			"R":"A",
+			"R'":"B",
+			"R2":"C",
+			"R2'":"D",
+			"F":"E",
+			"F'":"F",
+			"F2":"G",
+			"F2'":"H",
+			"U":"I",
+			"U'":"J",
+			"U2":"K",
+			"U2'":"L",
+			"B":"M",
+			"B'":"N",
+			"B2":"O",
+			"B2'":"P",
+			"D":"Q",
+			"D'":"R",
+			"D2":"S",
+			"D2'":"T",
+			"L":"U",
+			"L'":"V",
+			"L2":"W",
+			"L2'":"X",
+			"x":"Y",
+			"x'":"Z",
+			"x2":"a",
+			"x2'":"b",
+			"y":"c",
+			"y'":"d",
+			"y2":"e",
+			"y2'":"f",
+			"z":"g",
+			"z'":"h",
+			"z2":"i",
+			"z2'":"j"
+		}
+
+		alg=alg.split(" ");
+		for(var i=0;i<alg.length;++i)
+			alg[i]=mapping[alg[i]]||"k"+alg[i];
+		return alg.join("");
+	}
+
+	/*
+	 * math:decompressAlgorithm(alg)
+	 * @param alg String compressed algorithm
+	 * @returns decompressed Algorithm
+	 */
+	function decompressAlgorithm(alg){
+		var mapping={
+			"A":"R",
+			"B":"R'",
+			"C":"R2",
+			"D":"R2'",
+			"E":"F",
+			"F":"F'",
+			"G":"F2",
+			"H":"F2'",
+			"I":"U",
+			"J":"U'",
+			"K":"U2",
+			"L":"U2'",
+			"M":"B",
+			"N":"B'",
+			"O":"B2",
+			"P":"B2'",
+			"Q":"D",
+			"R":"D'",
+			"S":"D2",
+			"T":"D2'",
+			"U":"L",
+			"V":"L'",
+			"W":"L2",
+			"X":"L2'",
+			"Y":"x",
+			"Z":"x'",
+			"a":"x2",
+			"b":"x2'",
+			"c":"y",
+			"d":"y'",
+			"e":"y2",
+			"f":"y2'",
+			"g":"z",
+			"h":"z'",
+			"i":"z2",
+			"j":"z2'"
+		}
+
+		alg=alg.split("");
+		for(var i=0;i<alg.length;++i)
+			alg[i]=mapping[alg[i]]||"";
+		return alg.join(" ");
+	}
+
 	return {
 		init:init,
 		mean:getMean,
@@ -187,6 +289,8 @@ var math=(function(){
 		format:format,
 		formatPenalty:formatPenalty,
 		algInvert:algInvert,
-		applyPenalty:applyPenalty
+		applyPenalty:applyPenalty,
+		compressAlgorithm:compressAlgorithm,
+		decompressAlgorithm:decompressAlgorithm
 	}
 })();
