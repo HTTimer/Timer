@@ -56,7 +56,7 @@ var counter=(function(){
 					currentInspection:(startTime-currentInspection),
 					zeit:(endTime-startTime),
 					penalty:((startTime-currentInspection)>14999?2000:0),
-					flags:{fake:fake,uwr:false},
+					flags:{fake:fake,uwr:false,overinspect:(startTime-currentInspection)>14999},
 					scramble:scramble.getScramble(),
 					scrambletype:scramble.get_type()
 				});

@@ -261,11 +261,11 @@ table {
 	border-collapse: collapse;
 }
 
-.ALGSETS tbody tr:nth-child(even), .OPTIONS table.striped tbody tr td:nth-child(even) {
+.ALGSETS tbody tr:nth-child(even), .OPTIONS table.striped tbody tr td:nth-child(even), .GOALS table tbody tr td:nth-child(even) {
 	background-color: #CCC !important;
 }
 
-.OPTIONS table, .OPTIONS tr, .OPTIONS td {
+.OPTIONS table, .OPTIONS tr, .OPTIONS td, .GOALS td {
 	border:1px solid black;
 }
 
@@ -385,6 +385,9 @@ button:active {
 	top:1px;
 }
 
+/*
+ * Switches
+ */
 .switch {
   position: relative;
   display: inline-block;
@@ -438,6 +441,44 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/*
+ * Cards for Goals
+ */
+.card {
+	width: 5%;
+	min-width: 50px;
+	max-width: 100px;
+	margin: 5px;
+	padding: 3px;
+	height: 150px;
+	float: left;
+	font-size: 35px;
+	border: 1px solid black;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.card div:nth-child(3){
+	padding-top:5px;
+}
+
+/*
+ * Color classes
+ */
+.red {
+	background-color: red;
+}
+.green {
+	background-color: green;
+}
+.yellow {
+	background-color: yellow;
+}
+.orange {
+	background-color: orange;
 }
 
 /*

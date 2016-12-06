@@ -109,17 +109,39 @@ var math=(function(){
 	 * @param time Int in milliseconds
 	 * @returns formatted time as string
 	 */
-	function format(time){
-		if(time==DNF)return "DNF";
+	function format(time) {
+		var useMilliseconds=true;
+		var bits,secs,mins,hours,s;
 
-		var tme=""+time/1000;
-		while(tme.split(".")[1].length<3){
-			tme+="0";
-		}
-		while(tme.split(".")[1].length>3){
-			tme=tme.slice(0,-1);
-		}
-		return tme;
+		if(time<0)return"DNF";
+
+		time=Math.round(time/(useMilliseconds?1:10));
+		bits=time%(useMilliseconds?1000:100);
+		time=(time-bits)/(useMilliseconds?1000:100);
+		secs=time%60;
+		mins=((time-secs)/60)%60;
+		hours=(time-secs-60*mins)/3600;
+		s=""+bits;
+
+		//Fill 0s
+		if(bits<10)
+			s="0"+s;
+		if(bits<100&&useMilliseconds)
+			s="0"+s;
+
+		s=secs+"."+s;
+
+		//Fill 0s and append minutes if neccessary
+		if(secs<10&&(mins>0||hours>0))
+			s="0"+s;
+		if(mins>0||hours>0)
+			s=mins+":"+s;
+		if(mins<20&&hours>0)
+			s="0"+s;
+		if(hours>0)
+			s=hours+":"+s;
+
+		return s;
 	}
 
 	/*
