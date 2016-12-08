@@ -57,7 +57,7 @@ var stats=(function(){
       sizes.pop();
     code+=html.tr("Statistics","Best","Current");
     for(i=0;i<sizes.length;++i){
-      code+=html.tr("Mo"+sizes[i],math.format(math.bestMean(core.get("config").timeList[core.get("config").currentSession],sizes[i])),"-");
+      code+=html.tr("Mo"+sizes[i],math.format(math.bestMean(core.get("config").timeList[core.get("config").currentSession],sizes[i])),"DNF");
     }
     code=html.table(code);
 

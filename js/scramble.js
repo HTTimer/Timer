@@ -3,7 +3,7 @@
  */
 
 var scramble=(function(){
-	var type,cur_scramble="",scramblerNames=["111","222","333","444","555","666","777","Pyra","Mega","Square1","Skewb","Relay 222,333,444","Relay 222,333,444,555"];
+	var type,cur_scramble="",scramblerNames=["111","222","333","444","555","666","777","Pyra","Mega","Square1","Skewb"];
 
 	/*
 	 * scramble:Init()
@@ -17,6 +17,9 @@ var scramble=(function(){
 	 */
 	function sessionSwitchInit(){
 		//change type
+		type=sessions.current().scrambleType;
+		neu();
+		draw();
 	}
 
 	/*
@@ -37,14 +40,14 @@ var scramble=(function(){
 			<div>
 				<span style='text-align:middle;'>
 					<div style="display:table-cell;vertical-align:middle;height:43px;">
-						Length <input type="number" maxlength="3" length="5" value="-1" min="-1" max="4200" step="1"/>
+						Length<!-- <input type="number" maxlength="3" length="5" value="-1" min="-1" max="4200" step="1"/>-->
 					</div>
 				</span>
 				<span style='float:left;'>
 					<table cellspacing="0" cellpadding="0">
 						<tr>
-							<td><span class='item' onclick="html.toggle('dropdown-wca')">WCA</span></td>
-							<td><span class='item' onclick="html.toggle('dropdown-333')">3x3</span></td>
+							<td><span class='item' onclick="html.toggle('dropdown-wca')">Select scrambler</span></td>
+							<!--<td><span class='item' onclick="html.toggle('dropdown-333')">3x3</span></td>-->
 						</tr>
 					</table>
 				</span>
@@ -105,6 +108,11 @@ var scramble=(function(){
 		}
 
 		cur_scramble=definition[0].apply(null,definition[1]);
+
+		//Update session scrambler select
+		sessions.display();
+		sessions.current().scramblerType=type;
+
 		return cur_scramble;
 
 		//return edgescramble("r b2",["b2 r'","b2 U2 r U2 r U2 r U2 r"],["u"],30);
@@ -235,6 +243,7 @@ var scramble=(function(){
 	 */
 	function switchScrambler(to){
 		type=to;
+		sessions.current().scrambleType=type;
 		neu();
 		draw();
 	}

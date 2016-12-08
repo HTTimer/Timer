@@ -38,17 +38,9 @@
 				<div class="SESSIONSELECT"></div>
 				<div class="STATS"></div>
 			</div>
-			<div class="component component-middle TIME"><span class="keycodes">space</span>0.000</div>
-			<div class="component component-logo LOGO">HTTimer <small onclick="cmd.switchToText()">V4.3.0 Alpha Graphic</small></div>
-			<div class="component component-bottom">
-					<div class="bottom-menu" onclick="Mousetrap.trigger('o');"><span class="keycodes">o o</span> Options</div>
-					<div class="bottom-menu" onclick="Mousetrap.trigger('g');"><span class="keycodes">g g</span> Goals</div>
-					<div class="bottom-menu" onclick="Mousetrap.trigger('a');"><span class="keycodes">a a</span> AlgSets</div>
-					<div class="bottom-menu" onclick="Mousetrap.trigger('i');"><span class="keycodes">i i</span> Import/Export</div>
-					<div class="bottom-menu" onclick="Mousetrap.trigger('l');"><span class="keycodes">l l</span> Login</div>
-					<div class="bottom-menu" onclick="Mousetrap.trigger('m');"><span class="keycodes">m m</span> Music</div>
-					<div class="bottom-menu" onclick="Mousetrap.trigger('p');"><span class="keycodes">p p</span> Layout</div>
-			</div>
+			<div class="component component-middle TIME"></div>
+			<div class="component component-logo LOGO"></div>
+			<div class="component component-bottom BOTTOMMENU"></div>
 			<div class="options ALGSETS"></div>
 			<div class="options GOALS"></div>
 			<div class="options PORT"></div>

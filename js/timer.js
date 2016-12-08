@@ -46,7 +46,7 @@ timer=(function(){
 						customScramblerList:[],
 						algSets:[],
 						goals:[],
-						sessionData:[{phases:1,inspection:15,name:"New Session",solveType:"normal"}],
+						sessionData:[{phases:1,inspection:15,name:"New Session",solveType:"normal",method:"",scrambleType:"333"}],
 						currentSession:0
 					};
 				}
@@ -79,6 +79,16 @@ timer=(function(){
 		}else{
 			layout.setFullLayout("SCRAMBLE","","SCRAMBLEIMAGE","TIMELIST","TIME|CurrentAo5,CurrentAo12");
 		}
+
+		layout.write("BOTTOMMENU",`<div class="bottom-menu" onclick="Mousetrap.trigger('o');"><span class="keycodes">o o</span> Options</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('g');"><span class="keycodes">g g</span> Goals</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('a');"><span class="keycodes">a a</span> AlgSets</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('i');"><span class="keycodes">i i</span> Import/Export</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('l');"><span class="keycodes">l l</span> Login</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('m');"><span class="keycodes">m m</span> Music</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('p');"><span class="keycodes">p p</span> Layout</div>`);
+		layout.write("LOGO",`HTTimer <small onclick="cmd.switchToText()">V${version} Alpha Graphic</small>`);
+		layout.write("TIME",`<span class="keycodes">space</span>0.000`);
 
 		//Initialize components
 		counter .init();

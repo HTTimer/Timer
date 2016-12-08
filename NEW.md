@@ -31,6 +31,12 @@ Detect language using Country
 Load translation file
 Save translation file
 
+Options
+Hide left,right,top,bottom elements when running
+Inspection on/off
+What String to display of timingMode is off
+Translations: pointer to translations
+
 Layout edit
 Simple, Advanced versions
 Select look from HT,CS,QQ,PPT,JI
@@ -69,7 +75,6 @@ Feature Documentation
 Help
 How to contribute
 
-put Solving Method (Fridrich,Roux,...) in sessionData
 put Scrambler in sessionData
 
 Export to localStorage

@@ -15,20 +15,48 @@ var sessions=(function(){
 	 * sessions:display()
 	 */
 	function display(){
-		var code="<select>",i,sessionTypes;
+		var code="<select style='width:100%;'>",i,sessionTypes,method;
 
 		//Session select menu
 		for(i=0;i<core.get("config").timeList.length;++i){
 			code+="<option"+(i==core.get("config").currentSession?" selected ":" ")+"onclick='sessions.switchS("+i+")'>"+(i+1)+".: "+core.get("config").sessionData[i].name;
 		}
-		code+="<option onclick='sessions.create();'>New</select><select>";
+		code+="<option onclick='sessions.create();'>New</select><br/><select style='width:50%;'>";
 
 		//Session Event type menu
-		sessionTypes=["normal","OH","BLD","FMC","OH BLD","FT"];
+		sessionTypes=["2H","OH","BLD","FMC","OH BLD","FT"];
 		for(i=0;i<sessionTypes.length;++i){
 			code+="<option"+(sessions.current().solveType==sessionTypes[i]?" selected ":" ")+"onclick='sessions.current().solveType=\""+sessionTypes[i]+"\";stats.update();'>"+sessionTypes[i];
 		}
 		code+="</select>";
+
+		//Method menu
+		code+="<select style='width:50%;'>";
+
+		switch(scramble.get_type()){
+			case "222":
+				method=["LbL","Verasano","CLL","EG"];
+				break;
+			case "333":
+				method=["CFOP","LbL","Roux","Petrus"];
+				break;
+			case "444":
+				method=["LbL","Yau","Redux"];
+				break;
+			case "555":case "666":case "777":
+				method=["Redux","LbL","Yau5"];
+				break;
+			default:
+				method="not available for current scrambler";
+		}
+		if(typeof method=="String")
+			code+=method;
+		else{
+			code+="<option>Method";
+			for(i=0;i<method.length;++i)
+				code+="<option"+(sessions.current().method==method[i]?" selected ":" ")+"onclick='sessions.current().method=\""+method[i]+"\";'>"+method[i];
+		}
+		code+="</select><br/><br/>";
 		layout.write("SESSIONSELECT",code);
 	}
 
@@ -49,7 +77,16 @@ var sessions=(function(){
 	 */
 	function create(){
 		core.get("config").timeList.push([]);
-		core.get("config").sessionData.push({phases:1,inspection:15,name:"New Session",solveType:"normal"});//See timer.js, try to load data, do if if else, config
+		core.get("config").sessionData.push(
+			{
+				phases:1,
+				inspection:15,
+				name:"New Session",
+				solveType:"normal",
+				method:"",
+				scrambleType:"333"
+			}
+		); //See timer.js, try to load data, do if if else, config
 		switchS(core.get("config").timeList.length-1);
 		display();
 	}

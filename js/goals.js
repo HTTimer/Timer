@@ -82,10 +82,10 @@ var goals=(function(){
 	 * @returns time formatted to fit into 4 digits
 	 */
 	function formatGoal(time){
-		if(time<1000)
+		if(time<1e3)
 			return math.format(time);
-		if(time<60000)
-			return Math.round(time/100)/10+"s";
+		if(time<6e4)
+			return Math.round(time/1e2)/10+"s";
 		if(time<6e5)
 			return Math.round(time/6e4)+"min";
 		if(time<36e5)
