@@ -41,7 +41,9 @@ Layout edit
 Simple, Advanced versions
 Select look from HT,CS,QQ,PPT,JI
 
-Fake thereshold for more puzzles
+Remove fake flag if solve is considered fake but gets valid by a +2,+4,...
+Fake autodetect Option
+Fake thereshold Option
 UWR List
 Download current UWRs from Speedsolving.com wiki
 
@@ -51,8 +53,6 @@ Relay must have 2 or more puzzles
 Option for most Relay puzzles, default 64, may be set from 2 to 32768 (to around 1 sec of scrambling 3x3)
 
 UI for Relays
-UI for flags
-UI for UWR,fake
 UI for TimingMode
 UI for +4 ... +16
 
@@ -74,8 +74,6 @@ Sort Timelist by date xor time
 Feature Documentation
 Help
 How to contribute
-
-put Scrambler in sessionData
 
 Export to localStorage
 Export to sessionStorage

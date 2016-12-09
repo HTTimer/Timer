@@ -46,7 +46,16 @@ timer=(function(){
 						customScramblerList:[],
 						algSets:[],
 						goals:[],
-						sessionData:[{phases:1,inspection:15,name:"New Session",solveType:"normal",method:"",scrambleType:"333"}],
+						sessionData:[
+							{
+								phases:1,
+								inspection:15,
+								name:transl("New Session"),
+								solveType:"normal",
+								method:"",
+								scrambleType:"333"
+							}
+						],
 						currentSession:0
 					};
 				}
@@ -87,7 +96,7 @@ timer=(function(){
 			<div class="bottom-menu" onclick="Mousetrap.trigger('l');"><span class="keycodes">l l</span> Login</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('m');"><span class="keycodes">m m</span> Music</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('p');"><span class="keycodes">p p</span> Layout</div>`);
-		layout.write("LOGO",`HTTimer <small onclick="cmd.switchToText()">V${version} Alpha Graphic</small>`);
+		layout.write("LOGO",`HTTimer <small onclick="cmd.switchToText()">V${version} ${transl("Alpha Graphic")}</small>`);
 		layout.write("TIME",`<span class="keycodes">space</span>0.000`);
 
 		//Initialize components

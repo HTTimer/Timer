@@ -50,6 +50,8 @@ body {
 .component-middle {
 	top:30%;
 	right:35%;
+	left:35%;
+	border: none;
 }
 
 .component-author {

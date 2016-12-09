@@ -19,7 +19,8 @@ var translate=(function(){
 	var countryLanguage={"DE": "DE", "VG": "EN", "IO": "EN", "CN": "CH", "US": "EN"};
 	//Default language in case of no language defined
 	var defaultLanguage="EN";
-	var currentLanguage="EN";
+	var currentLanguage=defaultLanguage;
+	var supportedLanguages=["EN","DE"];
 
 	/*
 	 * translate:display()
@@ -38,8 +39,54 @@ var translate=(function(){
 		return code;
 	}
 
+	/*
+	 * translate:translate(what)
+	 * @param what String what to translate into currentLanguage
+	 * @return translated String what
+	 */
+	function translate(what){
+		//"translations" contains translations ordered by the index, the english
+		//translation. The translated english translation is not ordered.
+		var translations={
+			"EN":{
+				"Alpha Graphic":"Alpha Graphic",
+				"Best":"Best",
+				"Current":"Current",
+				"Last scramble":"Last scramble",
+				"Length":"Length",
+				"Method":"Method",
+				"Next scramble":"Next scramble",
+				"New Session":"New Session",
+				"Select scrambler":"Select scrambler",
+				"Statistics":"Statistics",
+				"Time":"Time"
+			},
+			"DE":{
+				"Alpha Graphic":"Alpha Grafisch",
+				"Best":"Bester",
+				"Current":"Aktueller",
+				"Last scramble":"Voherige Verdrehung",
+				"Length":"L&auml;nge",
+				"Method":"Methode",
+				"Next scramble":"N&auml;chste Verdrehung",
+				"New Session":"Neue Session",
+				"Select scrambler":"Scrambler ausw&auml;hlen",
+				"Statistics":"Statistik",
+				"Time":"Zeit"
+			}
+		}
+		return translations[currentLanguage][what]||"-"&&error.error("Missing translation for '"+what+"' to "+currentLanguage+"!");
+	}
+
 	return {
 		init:init,
-		display:display
+		display:display,
+		translate:translate,
+		currentLanguage:currentLanguage
 	}
 })();
+
+//Shortcut for translate.translate()@translate.js
+function transl(what){
+	return translate.translate(what);
+}

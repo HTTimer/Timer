@@ -42,8 +42,13 @@ var counter=(function(){
 				switch(scramble.get_type()){
 					case "555":case "444":case "Mega":case "Square1":
 						fake=(endTime-startTime)<5e3; //(endTime-startTime) is in milliseconds
+						break;
 					case "666":case "777":
 						fake=(endTime-startTime)<10e3;
+						break;
+					case "Pyra":case "Skewb":
+						fake=(endTime-startTime)<4e2;
+						break;
 					default:
 						fake=(endTime-startTime)<3e2;
 				}

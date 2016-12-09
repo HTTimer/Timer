@@ -38,7 +38,10 @@
 				<div class="SESSIONSELECT"></div>
 				<div class="STATS"></div>
 			</div>
-			<div class="component component-middle TIME"></div>
+			<div class="component component-middle">
+				<div class="TIME"></div>
+				<div class="FLAGS"></div>
+			</div>
 			<div class="component component-logo LOGO"></div>
 			<div class="component component-bottom BOTTOMMENU"></div>
 			<div class="options ALGSETS"></div>

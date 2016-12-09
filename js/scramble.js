@@ -40,20 +40,20 @@ var scramble=(function(){
 			<div>
 				<span style='text-align:middle;'>
 					<div style="display:table-cell;vertical-align:middle;height:43px;">
-						Length<!-- <input type="number" maxlength="3" length="5" value="-1" min="-1" max="4200" step="1"/>-->
+						${transl("Length")}<!-- <input type="number" maxlength="3" length="5" value="-1" min="-1" max="4200" step="1"/>-->
 					</div>
 				</span>
 				<span style='float:left;'>
 					<table cellspacing="0" cellpadding="0">
 						<tr>
-							<td><span class='item' onclick="html.toggle('dropdown-wca')">Select scrambler</span></td>
+							<td><span class='item' onclick="html.toggle('dropdown-wca')">${transl("Select scrambler")}</span></td>
 							<!--<td><span class='item' onclick="html.toggle('dropdown-333')">3x3</span></td>-->
 						</tr>
 					</table>
 				</span>
 				<span style='float:right;'>
 					<div style="display:table-cell;vertical-align:middle;height:43px;">
-						${html.keycode("t l")} &lt; Last scramble\&nbsp;\&nbsp;${html.keycode("t n")} Next scramble &gt;
+						${html.keycode("t l")} &lt; ${transl("Last scramble")}\&nbsp;\&nbsp;${html.keycode("t n")} ${transl("Next scramble")} &gt;
 					</div>
 				</span>
 			</div>`);
@@ -71,7 +71,7 @@ var scramble=(function(){
 	function neu(){
 		//Generating new scrambles has changed from V4.2.0: Previously, all scrambles were
 		//generated, the fitting one was chosen and all others were thrown away. Now, only
-		//the necceccary ones are generated.
+		//the necceccary ones are generated, which is much faster and efficient => faster.
 
 		var cubicSuffix=["","'","2"],
 			pyraSuffix=["","'"],
@@ -93,14 +93,14 @@ var scramble=(function(){
 
 		var definition=typeToDefinitionsMapping[type]||"333";
 
-		//Relays: Have type in form of "Relay Scrambler1,Scrambler2,Scrambler3,...,ScramblerN"
+		//Relays: Have type in form of "Relay Scrambler1,Scrambler2,...,ScramblerN"
 		if(type.split(" ")[0]=="Relay"){
 			var relayScramble=[],i,type2=type;
 			for(i=0;i<type2.split(" ")[1].split(",").length;++i){
 				type=type2.split(" ")[1].split(",")[i];
-				//We can only compute one scramble at once with neu, so call it
+				//We can only compute one scramble at once with neu() , so call it
 				//There can't be infinite recursion as long as no scrambler starts
-				//with "Relay ", as we only call ourselves, if that is the case
+				//with  "Relay " ,  as we only call ourselves if that is the  case
 				relayScramble.push(neu());
 			}
 			type=type2;
@@ -159,7 +159,8 @@ var scramble=(function(){
 		while(scrambleMoves.length<length){
 			scrambleMoves.push(rndEl(moves));
 			//Don't turn the same face twice
-			//@TODO know opposite faces to avoid R L R'
+			//This means, that it theoretically can have infinite running time :(
+			//@TODO know opposite faces to avoid R L R', base it on suffixes
 			if(scrambleMoves.length>1&&scrambleMoves[scrambleMoves.length-1][0]==scrambleMoves[scrambleMoves.length-2][0])
 				scrambleMoves.pop();
 		}

@@ -24,7 +24,7 @@ var sessions=(function(){
 		code+="<option onclick='sessions.create();'>New</select><br/><select style='width:50%;'>";
 
 		//Session Event type menu
-		sessionTypes=["2H","OH","BLD","FMC","OH BLD","FT"];
+		sessionTypes=["2H","OH","OH BLD","BLD","FMC","FT"];
 		for(i=0;i<sessionTypes.length;++i){
 			code+="<option"+(sessions.current().solveType==sessionTypes[i]?" selected ":" ")+"onclick='sessions.current().solveType=\""+sessionTypes[i]+"\";stats.update();'>"+sessionTypes[i];
 		}
@@ -52,7 +52,7 @@ var sessions=(function(){
 		if(typeof method=="String")
 			code+=method;
 		else{
-			code+="<option>Method";
+			code+="<option>"+transl("Method");
 			for(i=0;i<method.length;++i)
 				code+="<option"+(sessions.current().method==method[i]?" selected ":" ")+"onclick='sessions.current().method=\""+method[i]+"\";'>"+method[i];
 		}
@@ -81,7 +81,7 @@ var sessions=(function(){
 			{
 				phases:1,
 				inspection:15,
-				name:"New Session",
+				name:transl("New Session"),
 				solveType:"normal",
 				method:"",
 				scrambleType:"333"
