@@ -13,12 +13,19 @@ var options=(function(){
 		addCategory("Scramble");
 		addCategory("Statistics");
 
-		addOption(0,"Hide scramble when timing",1,["alert(true)","alert(false);",false]);
-		addOption(0,"Show milliseconds",1,["alert","alert",true]);
+		addOption(0,"Hide scramble when timing",1,["core.set('optHideScrambleWhenTiming',true)","core.set('optHideScrambleWhenTiming',false)",false]);
+		addOption(0,"Show milliseconds",1,["core.set('optUseMilliseconds',true)","core.set('optUseMilliseconds',false)",true]);
 
 		addOption(1,"Use Inspection",1,[",",",",true]);
 
-		addOption(3,"Default scramble type for new Session",0,"")
+		addOption(3,"Default scramble type for new Session",0,"");
+
+		core.set("optUseMilliseconds",true);
+		core.set("optHideScrambleWhenTiming",false);
+
+		core.set("optUseInspection",true);
+
+		core.set("optDefaultScrambleTypeForNewSession","333");
 	}
 
 	var currentCategory=0;

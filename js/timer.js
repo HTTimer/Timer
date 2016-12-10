@@ -15,7 +15,7 @@ timer=(function(){
 	 * - Write Layout
 	 * - Initialize components
 	 */
-	var moduleList=["algSets","core","counter","error","goals","layout","scramble"];
+	var moduleList=["algSets","core","counter","error","goals","layout","scramble","stats","keyboard","cmd","translate","html"];
 	var version="4.3.0A";
 
 	function init(){

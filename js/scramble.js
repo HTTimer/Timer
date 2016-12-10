@@ -46,8 +46,7 @@ var scramble=(function(){
 				<span style='float:left;'>
 					<table cellspacing="0" cellpadding="0">
 						<tr>
-							<td><span class='item' onclick="html.toggle('dropdown-wca')">${transl("Select scrambler")}</span></td>
-							<!--<td><span class='item' onclick="html.toggle('dropdown-333')">3x3</span></td>-->
+							<td class='SCRAMBLERSELECT'><span class='item' onclick="scramble.draw_step_1();">${transl("Select scrambler")}</span></td>
 						</tr>
 					</table>
 				</span>
@@ -62,6 +61,101 @@ var scramble=(function(){
 			for(i=0;i<scramblerNames.length;++i)
 				code+="<div class='option' onclick='scramble.switchScrambler(\""+scramblerNames[i]+"\");'>"+scramblerNames[i]+"</div>";
 			document.getElementById("dropdown-wca").innerHTML=code;
+	}
+
+	var tmp=[];
+	var types=["Pyramid","Cube" ,"Pentahedron","Octahedron","Dodecahedron","Other"];
+	var axis= [[4,6]    ,[3,4,6],[5]          ,[8]         ,[12,20]       ,[0]];
+	var layers=[[[2,3,4],[2,3,4,5]],[["Square-1","Square-2"],["Skewb"],[2,3,4,5,6,7]],[[0]],[[3]],[[2,3,5],[0]],[[0]]];
+	var scrambler=[ //Innerste arrays haben erst Titel, dann scramblerliste, nur wenn length==1, dann ist erster eintrag Name und scrambler gleichzeitig
+		[ //Pyraminx
+			[ //4 axis
+				["Pyraminx","WCA","Random State"],
+				["Master Pyraminx"],
+				["Professor Pyraminx"]
+			],
+			[ //6 axis
+				["Pyramorphix","WCA 2x2","Random moves"],
+				["Mastermorphix","Random moves with center orientation","Random moves without center orientation"],
+				["Megamorphix"],
+				["Ultramorphix"]
+			]
+		],
+		[ //Cube
+			[ //3 axis
+				["Square-1","Random moves","No Shapeshift","EP only"],
+				["Square-2"]
+			],
+			[ //4 axis
+				["Skewb","WCA","Random moves","Sledge scrambler","CO only"]
+			],
+			[ //6 axis
+				["2x2","WCA","Random moves","&lt;R,U&gt;","&lt;R2 U&gt;","Short","BLD","BLD Random orientation moves","Transparent"],
+				["3x3","WCA","Random moves","&lt;R,U&gt;","&lt;R,U,F&gt;","&lt;R,U,L&gt;","Short","BLD","BLD Random orientation moves","Transparent","Center orientation","Half center orientation"],
+				["4x4","WCA","Random moves","&lt;R,r,U,u&gt;","Edges only","Short","BLD","BLD Random orientation moves","Transparent","Supercube"],
+				["5x5","WCA","Random moves","&lt;R,r,U,u&gt;","Edges only","Short","BLD","BLD Random orientation moves","Center orientation"],
+				["6x6","WCA","Random moves","Edges only","Short","BLD","BLD Random orientation moves","Supercube"],
+				["7x7","WCA","Random moves","Edges only","Short","BLD","BLD Random orientation moves","Center orientation"]
+			]
+		],
+		[[["DNF"]]], //Pentahedron
+		[[["DNF"]]], //Octahedron
+		[ //Dodecahedron
+			[ //12 axis
+				["Kilominx"],
+				["Megaminx"],
+				["Gigaminx"]
+			],
+			[ //20 axis
+				["DNF"]
+			]
+		],
+		[[["DNF"]]] //Other
+	];
+
+	function draw_step_1(){
+		var code="Shape:<select>",i;
+		for(i=0;i<types.length;++i)
+			code+="<option onclick='scramble.draw_step_2("+i+")'>"+types[i];
+		code+="</select>";
+		layout.write("SCRAMBLERSELECT",code);
+	}
+
+	function draw_step_2(j){
+		var types=axis[j];
+
+		var code="Axis:<select>",i;
+		for(i=0;i<types.length;++i)
+			code+="<option onclick='scramble.draw_step_3("+j+","+i+")'>"+types[i];
+		code+="</select>";
+		layout.write("SCRAMBLERSELECT",code);
+	}
+
+	function draw_step_3(i,j){
+		var types=layers[i][j];
+
+		var code=[],k;
+		for(k=0;k<types.length;++k)
+			code.push("<option onclick='scramble.draw_step_4("+i+","+j+","+k+")'>"+types[k]);
+		code="Layers:<select>"+code.join("")+"</select>";
+		layout.write("SCRAMBLERSELECT",code);
+	}
+
+	function draw_step_4(i,j,k){
+		var types=scrambler[i][j][k];
+
+		var code=[],k;
+		for(l=0;l<types.length;++l)
+			code.push("<option onclick='scramble.draw_step_5("+i+","+j+","+k+","+l+")'>"+types[l]);
+		code="Scrambler:<select>"+code.join("")+"</select>";
+
+		if(scrambler.length==1)
+			code=scrambler[0];
+		layout.write("SCRAMBLERSELECT",code);
+	}
+
+	function draw_step_5(i,j,k,l){
+		layout.write("SCRAMBLERSELECT",scrambler[i][j][k][l]+"<span onclick='scramble.draw_step_1()'>Select scrambler</span>");
 	}
 
 	/*
@@ -256,6 +350,11 @@ var scramble=(function(){
 		switchScrambler:switchScrambler,
 		neu:neu,
 		draw:draw,
+		draw_step_1:draw_step_1,
+		draw_step_2:draw_step_2,
+		draw_step_3:draw_step_3,
+		draw_step_4:draw_step_4,
+		draw_step_5:draw_step_5,
 		getScramble:get_scramble,
 		get_type:get_type
 	}

@@ -26,7 +26,7 @@ Predefined AlgSets: ZBLL,SummerVariation,VLS,EG1,EG2,TCLL+,TCLL-
 Selftest, selffix
 Submit AlgSet to HT
 
-Translate to German, Chinese, English
+Translate to Chinese
 Detect language using Country
 Load translation file
 Save translation file
@@ -39,7 +39,7 @@ Translations: pointer to translations
 
 Layout edit
 Simple, Advanced versions
-Select look from HT,CS,QQ,PPT,JI
+Select look from HT,CS,QQ,PPT,JJ
 
 Remove fake flag if solve is considered fake but gets valid by a +2,+4,...
 Fake autodetect Option

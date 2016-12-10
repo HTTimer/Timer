@@ -110,7 +110,7 @@ var math=(function(){
 	 * @returns formatted time as string
 	 */
 	function format(time) {
-		var useMilliseconds=true;
+		var useMilliseconds=core.get("optUseMilliseconds");
 		var bits,secs,mins,hours,s;
 
 		if(time<0)return"DNF";

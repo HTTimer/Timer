@@ -84,7 +84,7 @@ var sessions=(function(){
 				name:transl("New Session"),
 				solveType:"normal",
 				method:"",
-				scrambleType:"333"
+				scrambleType:core.get("optDefaultScrambleTypeForNewSession")
 			}
 		); //See timer.js, try to load data, do if if else, config
 		switchS(core.get("config").timeList.length-1);
