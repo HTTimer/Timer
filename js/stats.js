@@ -78,7 +78,7 @@ var stats=(function(){
     }
     currentBig=i;
     var code="",solve=core.get("config").timeList[core.get("config").currentSession][i];
-    code="<table cellspacing='0' cellpadding='0'><tr><td onclick='stats.showFlags("+i+")'>Flags<br><!--UWR--><br>"
+    code="<table cellspacing='0' cellpadding='0'><tr><td onclick='stats.showDetails("+i+")'>Details<br><!--UWR--><br>"
     +(solve.flags.fake?"Fake":"\&nbsp;")
     +"</td><th>"+math.formatPenalty(solve)+"</th><td>#"+(i+1)+"<br/><span onclick='stats.togglePenalty("+i+",2)'>"
     if(solve.penalty==2000)
@@ -95,12 +95,14 @@ var stats=(function(){
   }
 
   /*
-   * stats:showFlags(i)
+   * stats:showDetails(i)
    * @param i Int SolveID
    */
-  function showFlags(i){
+  function showDetails(i){
     var solve,flags,i,code;
     solve=core.get("config").timeList[core.get("config").currentSession][i],
+
+    //Compute flags
     flags=["Fail","Mess up","Pop","OLL Skip","PLL Skip","Explosion",
     "COLL Skip","CMLL Skip","CxLL Skip","EOLine Skip","EOLL Skip","EPLL Skip",
     "CPLL Skip","LL Skip","6 move Last layer","VLS to PLL Skip","fake","UWR",];
@@ -129,7 +131,14 @@ var stats=(function(){
        ||solve.scrambletype=="666")
         flags.push("internal misalignment")
 
-    code="";
+    //Display some general data
+    code="Scramble: "+solve.scramble+"<br/>";
+    code+="Inspction time: "+math.format(solve.currentInspection)+"<br/>";
+    code+="Startdatum: "+math.formatDate(solve.startTime)+"<br/>";
+    code+="Enddatum: "+math.formatDate(solve.endTime)+"<br/>";
+    code+="<br/>";
+
+    //Display Flags
     for(i=0;i<flags.length;++i)
       code+="<input type='checkbox'"+(solve.flags[i]?" checked":"")+"/>"+flags[i]+"\&nbsp;";
 
@@ -160,7 +169,7 @@ var stats=(function(){
     sessionSwitchInit:sessionSwitchInit,
 		update:update,
     showBig:showBig,
-    showFlags:showFlags,
+    showDetails:showDetails,
     togglePenalty:togglePenalty
 	}
 })();

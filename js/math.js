@@ -301,6 +301,21 @@ var math=(function(){
 		return alg.join(" ");
 	}
 
+	/*
+	 * math:formatDate(ms)
+	 * @param ms Int
+	 */
+	function formatDate(ms){
+		var dt;
+
+		function addZ(n){
+        return(n<10?'0':'')+n;
+    }
+
+    dt=new Date(ms);
+    return addZ(dt.getHours())+':'+addZ(dt.getMinutes())+':'+addZ(dt.getSeconds())+"."+dt.getMilliseconds();
+	}
+
 	return {
 		init:init,
 		mean:getMean,
@@ -313,6 +328,7 @@ var math=(function(){
 		algInvert:algInvert,
 		applyPenalty:applyPenalty,
 		compressAlgorithm:compressAlgorithm,
-		decompressAlgorithm:decompressAlgorithm
+		decompressAlgorithm:decompressAlgorithm,
+		formatDate:formatDate
 	}
 })();

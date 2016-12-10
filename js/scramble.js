@@ -165,7 +165,7 @@ var scramble=(function(){
 			[ //6 axis
 				["2x2","222","222","222RU","222R2U","222sh","BLD","BLD Random orientation moves","Transparent"],
 				["3x3","333","333","333RU","333RUF","333RUL","333sh","BLD","BLD Random orientation moves","Transparent","Center orientation","Half center orientation"],
-				["4x4","444","444","&lt;R,r,U,u&gt;","Edges only","444sh","BLD","BLD Random orientation moves","Transparent","Supercube"],
+				["4x4","444","444","444RrUu","Edges only","444sh","BLD","BLD Random orientation moves","Transparent","Supercube"],
 				["5x5","555","555","&lt;R,r,U,u&gt;","Edges only","555sh","BLD","BLD Random orientation moves","Center orientation"],
 				["6x6","666","666","Edges only","666sh","BLD","BLD Random orientation moves","Supercube"],
 				["7x7","777","777","Edges only","777sh","BLD","BLD Random orientation moves","Center orientation"]
@@ -250,7 +250,7 @@ var scramble=(function(){
 
 	function draw_step_5(i,j,k,l){
 		layout.write("SCRAMBLERSELECT",scrambler[i][j][k][l]+"<span onclick='scramble.draw_step_1()'>Select scrambler</span>");
-		type=scramblerTypes[i][j][k][l];
+		switchScrambler(scramblerTypes[i][j][k][l]);
 		neu();
 		draw();
 	}
@@ -264,10 +264,13 @@ var scramble=(function(){
 		//generated, the fitting one was chosen and all others were thrown away. Now, only
 		//the necceccary ones are generated, which is much faster and efficient => faster.
 
+		var defaultScrambler="333";
+
 		var cubicSuffix=["","'","2"],
 			pyraSuffix=["","'"],
-			noSuffix=[""];		//Currently unused. Do not delete.
+			noSuffix=[""];
 
+		//Store moves, that are needed multiple times, here
 		var moves={
 			//Moves are prefixed with C for cubic, P for Pyramid, O for Octahedron, D for Dodecatedron and X for other
 			"C1":["x","y","z"],
@@ -289,12 +292,14 @@ var scramble=(function(){
 			"RU":["R","U"],
 			"RUF":["R","U","F"],
 			"RUL":["R","U","L"],
+			"RrUu":["R","r","U","u"],
 
 			//Special groups of moves
 			"SP_SKEWB_CO":["x","x'","z","z2","z'","x2","R' F R F' R' F R F'"],
 			"SP_SKEWB_SLEDGE":["x","x'","z","z'","z2","x2","y","y'","y2","Sledge"]
 		};
 
+		//Scramblername:[ScrambleFunction,[Arguments]]
 		var typeToDefinitionsMapping={
 			//WCA Puzzles + 1x1x1
 			"111":[scramble,[moves.C1,cubicSuffix,5]],
@@ -329,13 +334,14 @@ var scramble=(function(){
 			"333RU":[scramble,[moves.RU,cubicSuffix,21]],
 			"333RUF":[scramble,[moves.RUF,cubicSuffix,21]],
 			"333RUL":[scramble,[moves.RUL,cubicSuffix,21]],
+			"444RrUu":[scramble,[moves.RrUu,cubicSuffix,42]],
 
 			//Special
 			"SkewbSledge":[scramble,[moves.SP_SKEWB_SLEDGE,noSuffix,11]],
 			"SkewbCO":[scramble,[moves.SP_SKEWB_CO,noSuffix,11]]
 		};
 
-		var definition=typeToDefinitionsMapping[type]||"333";
+		var definition=typeToDefinitionsMapping[type]||defaultScrambler;
 
 		//Relays: Have type in form of "Relay Scrambler1,Scrambler2,...,ScramblerN"
 		if(type.split(" ")[0]=="Relay"){
@@ -351,6 +357,7 @@ var scramble=(function(){
 			definition=[ret,[relayScramble.join("<br/>")]];
 		}
 
+		//Call scramble function
 		cur_scramble=definition[0].apply(null,definition[1]);
 
 		//Update session scrambler select
