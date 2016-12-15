@@ -10,6 +10,9 @@ var server=(function(){
 
 	}
 
+	const SERVER_PATH="../HTTimer-4.3.0-Alpha-Server/";
+	const  TIMER_PATH="../HTTimer-4.3.0-Alpha/";
+
 	/*
 	 * server:json(url)
 	 * @param url String Url
@@ -18,7 +21,7 @@ var server=(function(){
 	 */
 	 function json(url,callback){
 		 var jsonFile=new XMLHttpRequest();
-     jsonFile.open("GET",url,true);
+     jsonFile.open("GET",SERVER_PATH+url,true);
      jsonFile.send();
      jsonFile.onreadystatechange=function(){callback(jsonFile)};
 	 }

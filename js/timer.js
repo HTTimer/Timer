@@ -15,11 +15,15 @@ timer=(function(){
 	 * - Write Layout
 	 * - Initialize components
 	 */
-	var moduleList=["algSets","core","counter","error","goals","layout","scramble","stats","keyboard","cmd","translate","html"];
+	var moduleList=["algSets","cmd","core","counter","error","goals","html","layout","scramble","stats","keyboard","translate"];
 	var version="4.3.0A";
 
 	function init(){
 		var i,config,check;
+
+		//Let the server check, whether the user is logged in. Assume, the user is not, in case it fails.
+		core.set("login",false);
+		server.json("isloggedin.php",function(t){core.set("login",!!t.response);});
 
 		//Check if all modules have been loaded
 		for(i=0;i<moduleList.length;++i){
@@ -34,11 +38,13 @@ timer=(function(){
 		}
 
 		//Try to load data from previous sessions
+		//Old versions saves will not get lost, as they save in HTexport, while we
+		//save in HTExport and HTAutoSave
 		check=false;
 		do{
 			if(!localStorage.HTExport||check){
-				if(localStorage.HTAutoSave){
-					config=JSON.parse(localStorage.HTAutoSave);
+				if(localStorage.HTAutoSave.length>100){
+					core.list=JSON.parse(localStorage.HTAutoSave);
 				}else{
 					config={
 						timeList:[[]],
@@ -60,11 +66,11 @@ timer=(function(){
 					};
 				}
 			}else{
-				config=JSON.parse(localStorage.HTExport);
+				core.list=JSON.parse(localStorage.HTExport);
 			}
 
 
-			if(!config.version&&!check) //There must be a config.version to have an importable data structure,
+			if(config&&!config.version&&!check) //There must be a config.version to have an importable data structure,
 																	//as only HT 4.3.0A and up are supported. Other versions are usable
 																	//using the import function, which is only available in a fully loaded
 																	//timer. Older timers did not have timerExport.version or have it false
@@ -76,17 +82,19 @@ timer=(function(){
 		//Set some variables
 		//Set variables using core.set (and core.get to get them) are NOT const and will be exported.
 		core.set("running",false);
-		core.set("importVersion",config.version||version);
-		core.set("version",version);
-		core.set("language","EN");
-		core.set("config",config);
-		core.set("timingMode","up"); //May be "up", "down". Everything else means "not timing"
+		if(typeof core.list.length==="undefined"){
+			core.set("importVersion",config&&config.version||version);
+			core.set("version",version);
+			core.set("language","EN");
+			core.set("config",config||core.get("config"));
+			core.set("timingMode","up"); //May be "up", "down". Everything else means "not timing"
 
-		//Write layout
-		if(config.layout){
-			layout.setFullLayout(config.layout);
-		}else{
-			layout.setFullLayout("SCRAMBLE","","SCRAMBLEIMAGE","TIMELIST","TIME|CurrentAo5,CurrentAo12");
+			//Write layout
+			if(config&&config.layout){
+				layout.setFullLayout(config.layout);
+			}else{
+				layout.setFullLayout("SCRAMBLE","","SCRAMBLEIMAGE","TIMELIST","TIME|CurrentAo5,CurrentAo12");
+			}
 		}
 
 		layout.write("BOTTOMMENU",`<div class="bottom-menu" onclick="Mousetrap.trigger('o');"><span class="keycodes">o o</span> Options</div>
@@ -114,6 +122,15 @@ timer=(function(){
 		scramble.draw();
 
 		sessions.display();
+
+		//Autosave
+		setInterval(function(){
+			localStorage.HTAutoSave=JSON.stringify(core.getAll());
+		},5e3);
+	}
+
+	function exportCode(){
+		return JSON.stringify(core.getAll())
 	}
 
 	return {
