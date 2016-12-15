@@ -90,7 +90,7 @@ var counter=(function(){
 				core.set("running",true);
 				//Timer started? Store start time
 				if(startTime===0)startTime=+new Date()-1;//-1 because there needs to be at least
-														 										 //one millisecond befor update gets called
+														 										 //one millisecond before update gets called
 				//Timer stopped? Store end time
 				if(currentStage>phases){
 					currentStage=+Infinity;

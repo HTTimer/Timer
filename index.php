@@ -19,6 +19,7 @@
 		<script src="js/timer.js"></script>
 		<script src="js/cnd.js"></script>
 		<script src="js/progress.js"></script>
+		<script src="js/server.js"></script>
 		<meta/>
 		<link rel="stylesheet" type="text/css" href="css/timer.css"/>
 	</head>
