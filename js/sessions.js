@@ -35,23 +35,36 @@ var sessions=(function(){
 
 		switch(scramble.get_type()){
 			case "222":
-				method=["LbL","Verasano","CLL","EG"];
+				method=["LbL","Verasano","CLL","EG","TCLL","Guimond","OFOTA","VOP","SS"];
 				break;
 			case "333":
-				method=["CFOP","LbL","Roux","Petrus"];
+				method=["CFOP","LbL","Roux","Petrus","ZZ","Heise","Synder","SSC","Briggs2","Waterman","Tripod","L2L","CFCE","FreeFop","8355","Keyhole","XG","Samsara"];
 				break;
 			case "444":
-				method=["LbL","Yau","Redux"];
+				method=["LbL","Yau","Redux","HoYa","Cage","K4","Z4","Sandwich","Js4"];
 				break;
 			case "555":case "666":case "777":
-				method=["Redux","LbL","Yau5"];
+				method=["Redux","LbL","Yau5","HoYa","Cage"];
+				break;
+			case "Mega":
+				method=["Balint","Beginner","Keyhole"];
+				break;
+			case "Pyra":
+				method=["Corners first","Layer first","L4E","Petrus","Face permute","WO","Oka","Nutella"];
+				break;
+			case "Square1":
+				method=["SSS1M","Vandenbergh","Roux","Skwuction","Yoleberry","COEOCPEP"];
+				break;
+			case "Skewb":
+				method=["Sarah","Ranzha","1 Algorithm","Kirjava-Meep","ITC","Skrouxb"];
 				break;
 			default:
 				method="not available for current scrambler";
 		}
-		if(typeof method=="String")
+		if(typeof method=="string")
 			code+=method;
 		else{
+			method.push("other");
 			code+="<option>"+transl("Method");
 			for(i=0;i<method.length;++i)
 				code+="<option"+(sessions.current().method==method[i]?" selected ":" ")+"onclick='sessions.current().method=\""+method[i]+"\";'>"+method[i];

@@ -134,8 +134,8 @@ var stats=(function(){
     //Display some general data
     code="Scramble: "+solve.scramble+"<br/>";
     code+="Inspction time: "+math.format(solve.currentInspection)+"<br/>";
-    code+="Startdatum: "+math.formatDate(solve.startTime)+"<br/>";
-    code+="Enddatum: "+math.formatDate(solve.endTime)+"<br/>";
+    code+="Start date: "+math.formatDate(solve.startTime)+"<br/>";
+    code+="End date: "+math.formatDate(solve.endTime)+"<br/>";
     code+="<br/>";
 
     //Display Flags

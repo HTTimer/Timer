@@ -83,6 +83,7 @@ var counter=(function(){
 				//Start inspection
 				currentInspection=+new Date();
 				layout.write("TIME","Inspect");
+				layout.write("FLAGS","");
 				break;
 			default:
 				//Running

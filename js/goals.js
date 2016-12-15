@@ -8,7 +8,7 @@ var goals=(function(){
 	 */
 	function init(){
 		if(typeof core.get("goals")==="undefined")
-			core.set("goals",[[[1,1]]]);//[Sessions[Goals[Average of x, Goalfor Average of x, Date, disabled]]]
+			core.set("goals",[[]]);//[Sessions[Goals[Average of x, Goalfor Average of x, Date, disabled]]]
 		while(core.get("goals").length<core.get("config").timeList.length)
 			core.get("goals").push([]);
 	}

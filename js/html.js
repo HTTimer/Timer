@@ -50,6 +50,8 @@ var html=(function(){
 	 * @returns a elm containing val
 	 */
 	function el(elm,val){
+		if(elm=="br"||elm=="hr")
+			return "<"+elm+"/>";
 		if(val=="")
 			return "<"+elm+"/>";
 		return "<"+elm+">"+val+"</"+elm+">";

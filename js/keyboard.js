@@ -21,13 +21,13 @@ var keyboard=(function(){
 	 */
 	function init(){
 		Mousetrap.bind("space",counter.startStop);
-		Mousetrap.bind("o",function(){document.getElementsByClassName('OPTIONS')[0].style.display="block";options.display();});
-		Mousetrap.bind("g",function(){document.getElementsByClassName('GOALS')[0].style.display="block";goals.display();});
-		Mousetrap.bind("a",function(){document.getElementsByClassName('ALGSETS')[0].style.display="block";algSets.display();});
-		Mousetrap.bind("i",function(){document.getElementsByClassName('PORT')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("l",function(){document.getElementsByClassName('LOGIN')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("m",function(){document.getElementsByClassName('MUSIC')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("p",function(){document.getElementsByClassName('LAYOUT')[0].style.display="block";layout.display();});
+		Mousetrap.bind("o o",function(){document.getElementsByClassName('OPTIONS')[0].style.display="block";options.display();});
+		Mousetrap.bind("g g",function(){document.getElementsByClassName('GOALS')[0].style.display="block";goals.display();});
+		Mousetrap.bind("a a",function(){document.getElementsByClassName('ALGSETS')[0].style.display="block";algSets.display();});
+		Mousetrap.bind("i i",function(){document.getElementsByClassName('PORT')[0].style.display="block";algSets.addAlg();algSets.display();});
+		Mousetrap.bind("l l",function(){document.getElementsByClassName('LOGIN')[0].style.display="block";algSets.addAlg();algSets.display();});
+		Mousetrap.bind("m m",function(){document.getElementsByClassName('MUSIC')[0].style.display="block";algSets.addAlg();algSets.display();});
+		Mousetrap.bind("p p",function(){document.getElementsByClassName('LAYOUT')[0].style.display="block";layout.display();});
 		Mousetrap.bind("o c",function(){document.getElementsByClassName('OPTIONS')[0].style.display="none";});
 		Mousetrap.bind("g c",function(){document.getElementsByClassName('GOALS')[0].style.display="none";});
 		Mousetrap.bind("a c",function(){document.getElementsByClassName('ALGSETS')[0].style.display="none";});

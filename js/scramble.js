@@ -65,7 +65,7 @@ var scramble=(function(){
 
 	var tmp=[];
 	var types=["Pyramid","Cube"    ,"Pentahedron","Octahedron","Dodecahedron","Other"];
-	var axis= [[4,6]    ,[3,4,6,12],[5]          ,[8]         ,[12,20]       ,[0]];
+	var axis= [[4,6]    ,[3,4,6,12],[5]          ,[8]         ,[12,20]       ,["Relay"]];
 	var layers=[
 		[ //Pyramid
 			[2,3,4],[2,3,4,5]
@@ -83,7 +83,7 @@ var scramble=(function(){
 			[2,3,4,5,7,9,11],[0]
 		],
 		[ //Other
-			[0]
+			["Cubic Relay","Other Relay"]
 		]
 	];
 	var scrambler=[ //Innerste arrays haben erst Titel, dann scramblerliste, nur wenn length==1, dann ist erster eintrag Name und scrambler gleichzeitig
@@ -137,7 +137,12 @@ var scramble=(function(){
 				["DNF"]
 			]
 		],
-		[[["DNF"]]] //Other
+		[
+			[
+				["Cubic Relay","2x2-3x3","2x2-4x4","2x2-5x5","2x2-6x6","2x2-7x7"],
+				["Other Relay","Minx","2x2, 3x3, Pyra, Skewb"]
+			]
+		] //Other
 	];
 	//Convert index of array to scrambler type id
 	var scramblerTypes=[
@@ -191,7 +196,12 @@ var scramble=(function(){
 				["DNF"]
 			]
 		],
-		[[["DNF"]]] //Other
+		[
+			[
+				["Cubic Relay","Relay 222,333","Relay 222,333,444","Relay 222,333,444,555","Relay 222,333,444,555,666","Relay 222,333,444,555,666,777"],
+				["Other Relay","Relay Pyra,Mega,Skewb","Relay 222,333,Pyra,Skewb"]
+			]
+		] //Other
 	];
 
 	function draw_step_1(){
@@ -272,7 +282,7 @@ var scramble=(function(){
 
 		//Store moves, that are needed multiple times, here
 		var moves={
-			//Moves are prefixed with C for cubic, P for Pyramid, O for Octahedron, D for Dodecatedron and X for other
+			//Moves in this group are prefixed with C for cubic, P for Pyramid, O for Octahedron, D for Dodecatedron and X for other
 			"C1":["x","y","z"],
 			"C2":["R","U","F"],
 			"C3":["R","U","F","D","B","L"],
@@ -296,7 +306,7 @@ var scramble=(function(){
 
 			//Special groups of moves
 			"SP_SKEWB_CO":["x","x'","z","z2","z'","x2","R' F R F' R' F R F'"],
-			"SP_SKEWB_SLEDGE":["x","x'","z","z'","z2","x2","y","y'","y2","Sledge"]
+			"SP_SKEWB_SLEDGE":["x","x'","z","z'","z2","x2","y","y'","y2","Sledge","Sledge"]
 		};
 
 		//Scramblername:[ScrambleFunction,[Arguments]]
@@ -310,7 +320,7 @@ var scramble=(function(){
 			"666":[scramble,[moves.C6,cubicSuffix,110]],
 			"777":[scramble,[moves.C7,cubicSuffix,140]],
 			"Pyra":[scramble,[moves.P2,pyraSuffix,11]],
-			"Skewb":[scramble,[moves.P2,pyraSuffix,11]],//Skewb is cubic but turns like a pyra
+			"Skewb":[scramble,[moves.P2,pyraSuffix,11]], //Skewb is cubic but turns like a pyra
 			"Square1":[ret,["Not available"]],
 			"Mega":[scrambleMega,[moves.D3,["U","U'"],10,5]],
 
