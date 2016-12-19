@@ -1,11 +1,11 @@
 New
 ===
 
-Multi-Stage timing
-Scramble for 666 and 777
-Save scramble with time
-Text-based mode
-Set penalty for overinspecting
+- Multi-Stage timing
+- Scramble for 666 and 777
+- Save scramble with time
+- Text-based mode
+- Set penalty for overinspecting
 
 TODO
 ====
@@ -122,3 +122,4 @@ Everything else
 - Friends
 - Compare to Friends
 - TTW-Like things
+- Clock should have no +2

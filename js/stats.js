@@ -164,12 +164,45 @@ var stats=(function(){
     showBig(currentBig);
   }
 
+  function display(){
+    var solves,i,pbList,cur,outhtml;
+
+  	//Get array of PBs
+    solves=core.get("config").timeList[core.get("config").currentSession];
+    cur=+Infinity;
+    pbList=[];
+    for(i=0;i<solves.length;++i){
+      if(solves[i].zeit<cur){
+        cur=solves[i].zeit+1;
+        pbList.push(i);
+      }
+    }
+
+    //Generate table
+    outhtml="PB improvements<br/>";
+    outhtml+=html.tr("ID","Time","Improvement","Solves as PB","Time as PB","Date")
+    for(i=0;i<pbList.length;++i){
+      outhtml+=html.tr(
+        i,
+        math.format(solves[pbList[i]].zeit),
+        i>0?(math.format(solves[pbList[i-1]].zeit-solves[pbList[i]].zeit)):"-",
+        i==pbList.length-1?"-":pbList[i+1]-pbList[i],
+        i==pbList.length-1||i<1?"-":solves[pbList[i+1]].endTime-solves[pbList[i]].endTime+"ms",
+        math.formatDate(solves[pbList[i]].endTime)
+      );
+    }
+    outhtml=html.table(outhtml);
+
+    layout.write("STATISTICS",outhtml);
+  }
+
 	return {
 		init:init,
     sessionSwitchInit:sessionSwitchInit,
 		update:update,
     showBig:showBig,
     showDetails:showDetails,
-    togglePenalty:togglePenalty
+    togglePenalty:togglePenalty,
+    display:display
 	}
 })();

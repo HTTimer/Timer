@@ -52,6 +52,8 @@
 			<div class="options PRACTISE"></div>
 			<div class="options OPTIONS"></div>
 			<div class="options LAYOUT"></div>
+			<div class="options COLLECTION"></div>
+			<div class="options STATISTICS"></div>
 
 			<div id="dropdown-wca" onmouseout="html.toggle('dropdown-wca');"></div>
 			<div id="dropdown-333" onmouseout="html.toggle('dropdown-333');"></div>

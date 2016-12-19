@@ -44,7 +44,7 @@ var sessions=(function(){
 				method=["LbL","Yau","Redux","HoYa","Cage","K4","Z4","Sandwich","Js4"];
 				break;
 			case "555":case "666":case "777":
-				method=["Redux","LbL","Yau5","HoYa","Cage"];
+				method=["Redux","LbL","Yau5","HoYa","Cage","Meyer"];
 				break;
 			case "Mega":
 				method=["Balint","Beginner","Keyhole"];

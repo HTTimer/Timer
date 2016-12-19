@@ -26,15 +26,15 @@ var keyboard=(function(){
 		Mousetrap.bind("a a",function(){document.getElementsByClassName('ALGSETS')[0].style.display="block";algSets.display();});
 		Mousetrap.bind("i i",function(){document.getElementsByClassName('PORT')[0].style.display="block";algSets.addAlg();algSets.display();});
 		Mousetrap.bind("l l",function(){document.getElementsByClassName('LOGIN')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("m m",function(){document.getElementsByClassName('MUSIC')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("p p",function(){document.getElementsByClassName('LAYOUT')[0].style.display="block";layout.display();});
+		Mousetrap.bind("m m",function(){document.getElementsByClassName('COLLECTION')[0].style.display="block";algSets.addAlg();algSets.display();});
+		Mousetrap.bind("p p",function(){document.getElementsByClassName('STATISTICS')[0].style.display="block";stats.display();});
 		Mousetrap.bind("o c",function(){document.getElementsByClassName('OPTIONS')[0].style.display="none";});
 		Mousetrap.bind("g c",function(){document.getElementsByClassName('GOALS')[0].style.display="none";});
 		Mousetrap.bind("a c",function(){document.getElementsByClassName('ALGSETS')[0].style.display="none";});
 		Mousetrap.bind("i c",function(){document.getElementsByClassName('PORT')[0].style.display="none";});
 		Mousetrap.bind("l c",function(){document.getElementsByClassName('LOGIN')[0].style.display="none";});
-		Mousetrap.bind("m c",function(){document.getElementsByClassName('MUSIC')[0].style.display="none";});
-		Mousetrap.bind("p c",function(){document.getElementsByClassName('LAYOUT')[0].style.display="none";});
+		Mousetrap.bind("m c",function(){document.getElementsByClassName('COLLECTION')[0].style.display="none";});
+		Mousetrap.bind("p c",function(){document.getElementsByClassName('STATISTICS')[0].style.display="none";});
 		Mousetrap.bind("ctrl",keyboard.displayKeys,"keydown");
 		Mousetrap.bind("ctrl",keyboard.undisplayKeys,"keyup");
 	}

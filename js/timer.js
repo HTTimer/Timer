@@ -102,8 +102,8 @@ timer=(function(){
 			<div class="bottom-menu" onclick="Mousetrap.trigger('a a');"><span class="keycodes">a a</span> AlgSets</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('i i');"><span class="keycodes">i i</span> Import/Export</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('l l');"><span class="keycodes">l l</span> Login</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('m m');"><span class="keycodes">m m</span> Music</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('p p');"><span class="keycodes">p p</span> Layout</div>`);
+			<div class="bottom-menu" onclick="Mousetrap.trigger('m m');"><span class="keycodes">m m</span> Collection</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('p p');"><span class="keycodes">p p</span> Statistics</div>`);
 		layout.write("LOGO",`HTTimer <small onclick="cmd.switchToText()">V${version} ${transl("Alpha Graphic")}</small>`);
 		layout.write("TIME",`<span class="keycodes">space</span>0.000`);
 

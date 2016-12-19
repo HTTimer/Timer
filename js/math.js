@@ -313,7 +313,7 @@ var math=(function(){
     }
 
     dt=new Date(ms);
-    return addZ(dt.getHours())+':'+addZ(dt.getMinutes())+':'+addZ(dt.getSeconds())+"."+dt.getMilliseconds();
+    return dt.getFullYear()+"/"+(dt.getMonth()+1)+"/"+dt.getDate()+" "+addZ(dt.getHours())+':'+addZ(dt.getMinutes())+':'+addZ(dt.getSeconds())+"."+dt.getMilliseconds();
 	}
 
 	return {
