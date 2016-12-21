@@ -14,7 +14,7 @@ var counter=(function(){
 		currentTime=0;
 		currentInspection=0;
 		currentStage=0; //CurrentStage shows what stage the time is in.
-										//0: Ready, 1: Inspection started, 2: Running phase n, +Infinity: stopped
+						//0: Ready, 1: Inspection started, 2: Running phase n, +Infinity: stopped
 		phases=sessions.current().phases;
 		inspection=sessions.current().inspection;
 		startTime=0;
@@ -55,7 +55,7 @@ var counter=(function(){
 
 				//Add solve to current Session
 				core.get("config").timeList[core.get("config").currentSession].push({ //We won't land here before a solve was done, as currentStage is initialized
-																																							//as 0 and we increment it by 1 before executing this case
+																					  //as 0 and we increment it by 1 before executing this case
 					startTime:startTime+1,
 					endTime:endTime,
 					currentInspection:(startTime-currentInspection),
@@ -90,7 +90,7 @@ var counter=(function(){
 				core.set("running",true);
 				//Timer started? Store start time
 				if(startTime===0)startTime=+new Date()-1;//-1 because there needs to be at least
-														 										 //one millisecond before update gets called
+														 //one millisecond before update gets called
 				//Timer stopped? Store end time
 				if(currentStage>phases){
 					currentStage=+Infinity;

@@ -16,8 +16,8 @@ Goals
 - Set goals for Date
 - Show percentage as progress bar in background of goals card
 
-Login
------
+Login to
+--------
 - Export from Server
 - Import from Server
 - Animate algs in algSets
@@ -31,7 +31,7 @@ Login
 
 Translate
 ---------
-- Translate to Chinese
+- Translate to other languages
 - Detect language using Country
 - Load translation file
 - Save translation file
@@ -42,6 +42,9 @@ Options
 - Inspection on/off
 - What String to display of timingMode is off
 - Translations: pointer to translations
+- Allow +2 and DNF on old solves
+- Max inspection time
+- alert on pb
 
 Layout edit
 -----------
@@ -59,7 +62,7 @@ Fake,UWR
 Scrambler
 ---------
 - Custom scrambler
-- Predefined Relays: 2-6,2-7,2-8,2-9,2-10,2-11,2-11+13,WCA,Guildford,Mini Guildford,23PyraSkewb
+- Predefined Relays: 2-8,2-9,2-10,2-11,2-11+13,Guildford,Mini Guildford,23PyraSkewb
 - Relay must have 2 or more puzzles
 - Option for most Relay puzzles, default 64, may be set from 2 to 32768 (to around 1 sec of scrambling 3x3)
 

@@ -139,8 +139,8 @@ var scramble=(function(){
 		],
 		[
 			[
-				["Cubic Relay","2x2-3x3","2x2-4x4","2x2-5x5","2x2-6x6","2x2-7x7"],
-				["Other Relay","Minx","2x2, 3x3, Pyra, Skewb"]
+				["Cubic Relay","2x2-3x3","2x2-4x4","2x2-5x5","2x2-6x6","2x2-7x7","2x2-8x8","2x2-9x9"],
+				["Other Relay","Minx","2x2, 3x3, Pyra, Skewb","WCA","Parity"]
 			]
 		] //Other
 	];
@@ -168,16 +168,16 @@ var scramble=(function(){
 				["Skewb","Skewb","Skewb","SkewbSledge","SkewbCO"]
 			],
 			[ //6 axis
-				["2x2","222","222","222RU","222R2U","222sh","BLD","BLD Random orientation moves","Transparent"],
-				["3x3","333","333","333RU","333RUF","333RUL","333sh","BLD","BLD Random orientation moves","Transparent","Center orientation","Half center orientation"],
-				["4x4","444","444","444RrUu","Edges only","444sh","BLD","BLD Random orientation moves","Transparent","Supercube"],
-				["5x5","555","555","&lt;R,r,U,u&gt;","Edges only","555sh","BLD","BLD Random orientation moves","Center orientation"],
-				["6x6","666","666","Edges only","666sh","BLD","BLD Random orientation moves","Supercube"],
-				["7x7","777","777","Edges only","777sh","BLD","BLD Random orientation moves","Center orientation"]
+				["2x2","222","222","222RU","222R2U","222sh","BLD","222BLDROM","222T"],
+				["3x3","333","333","333RU","333RUF","333RUL","333sh","333BLD","333BLDROM","333T","333Co","333HCo"],
+				["4x4","444","444","444RrUu","555Eo","444sh","444BLD","444BLDROM","444T","444Su"],
+				["5x5","555","555","555RrUu","555Eo","555sh","555BLD","555BLDROM","555Co"],
+				["6x6","666","666","666Eo","666sh","666BLD","666BLDROM","666Su"],
+				["7x7","777","777","777Eo","777sh","777BLD","777BLDR","777Co"]
 			],
 			[ //12 axis
-				["Helicopter","Jumbled","no jumbling"],
-				["Curvy copter","Jumbled","no jumbling"]
+				["Helicopter","HeliJumb","Heli"],
+				["Curvy copter","CurvyJumb","Curvy"]
 			]
 		],
 		[[["DNF"]]], //Pentahedron
@@ -198,8 +198,8 @@ var scramble=(function(){
 		],
 		[
 			[
-				["Cubic Relay","Relay 222,333","Relay 222,333,444","Relay 222,333,444,555","Relay 222,333,444,555,666","Relay 222,333,444,555,666,777"],
-				["Other Relay","Relay Pyra,Mega,Skewb","Relay 222,333,Pyra,Skewb"]
+				["Cubic Relay","Relay 222,333","Relay 222,333,444","Relay 222,333,444,555","Relay 222,333,444,555,666","Relay 222,333,444,555,666,777","Relay 222,333,444,555,666,777 888",,"Relay 222,333,444,555,666,777,888,999"],
+				["Other Relay","Relay Pyra,Mega,Skewb","Relay 222,333,Pyra,Skewb","Relay 222,333,444,555,666,777,333,333BLD,444BLD,555BLD,Square1,Skewb,Clock,Mega,Pyra,333","Relay 444,666,Square1"]
 			]
 		] //Other
 	];
@@ -236,7 +236,7 @@ var scramble=(function(){
 			code=[];
 			for(k=0;k<types.length;++k){
 				code.push("<optgroup label='"+scrambler[i][j][k][0]+"'/>");
-				for(l=0;l<scrambler[i][j][k].length;++l)
+				for(l=1;l<scrambler[i][j][k].length;++l)
 					code.push("<option onclick='scramble.draw_step_5("+i+","+j+","+k+","+l+")'>"+scrambler[i][j][k][l]);
 			}
 		}

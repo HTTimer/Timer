@@ -136,7 +136,7 @@ body {
 
 .TIME {
 	font-size:150px;
-	font-family:courier;
+	font-family:Roboto,courier;
 	border:none;
 	background-color:white;
 }
@@ -167,7 +167,7 @@ body {
 }
 
 #desktop-graphic {
-
+	display: none;
 }
 #desktop-text {
 	display:none;
@@ -286,6 +286,7 @@ input {
 
  select {
 	 border: 1px solid #444444;
+	 background-color: inherit;
  }
 
 /*

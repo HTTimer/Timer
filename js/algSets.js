@@ -48,7 +48,7 @@ var algSets=(function(){
 				"modify",
 				"learn",
 				"practise",
-				"view",
+				"<a href='alg.cubing.net/?setup=&alg=&view=playback' target='_blank'>view</a>",
 				"help"
 			);
 		}
@@ -87,7 +87,7 @@ var algSets=(function(){
 	 * algSets:addAlg()
 	 */
 	function addAlg(){
-		sets[currentSet].push({name:"Aa",alg:"x R' U R' D2 R U' R' D2 R2 x'",flags:{star:false}});
+		sets[currentSet].push({name:prompt("Name"),alg:prompt("Alg"),flags:{star:false}});
 		display();
 	}
 

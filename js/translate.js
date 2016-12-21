@@ -57,6 +57,7 @@ var translate=(function(){
 				"Method":"Method",
 				"Next scramble":"Next scramble",
 				"New Session":"New Session",
+				"Scramble":"Scramble",
 				"Select scrambler":"Select scrambler",
 				"Statistics":"Statistics",
 				"Time":"Time"
@@ -69,7 +70,8 @@ var translate=(function(){
 				"Length":"L&auml;nge",
 				"Method":"Methode",
 				"Next scramble":"N&auml;chste Verdrehung",
-				"New Session":"Neue Session",
+				"New Session":"Neue Sitzung",
+				"Scramble":"Verdrehung",
 				"Select scrambler":"Scrambler ausw&auml;hlen",
 				"Statistics":"Statistik",
 				"Time":"Zeit"

@@ -132,7 +132,7 @@ var stats=(function(){
         flags.push("internal misalignment")
 
     //Display some general data
-    code="Scramble: "+solve.scramble+"<br/>";
+    code=transl("Scramble")+": "+solve.scramble+"<br/>";
     code+="Inspction time: "+math.format(solve.currentInspection)+"<br/>";
     code+="Start date: "+math.formatDate(solve.startTime)+"<br/>";
     code+="End date: "+math.formatDate(solve.endTime)+"<br/>";

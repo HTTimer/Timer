@@ -22,6 +22,7 @@
 		<script src="js/server.js"></script>
 		<meta/>
 		<link rel="stylesheet" type="text/css" href="css/timer.css"/>
+		<style></style>
 	</head>
 	<body onload="timer.init();">
 		<!--
@@ -32,7 +33,7 @@
 			Initialize containers for components.
 			These will be filled later using javascript.
 			-->
-			<!--<div class="component component-author">YTCuber</div>-->
+			<div class="component component-author">YTCuber</div>
 			<div class="component component-left TIMELIST"></div>
 			<div class="component component-top SCRAMBLE"></div>
 			<div class="component component-right">
@@ -56,7 +57,6 @@
 			<div class="options STATISTICS"></div>
 
 			<div id="dropdown-wca" onmouseout="html.toggle('dropdown-wca');"></div>
-			<div id="dropdown-333" onmouseout="html.toggle('dropdown-333');"></div>
 		</div>
 
 		<!--
@@ -69,6 +69,13 @@
 				<span style='color:#22DD22'>HT4.3.0A&gt;</span> </span><input class="text-input" id="btn_cmd" type="text"/>
 			</div>
 		</div>
+
+		<div id="begin">
+			<h2>Welcome to HTTimer!</h2>
+			<br/>
+			<button onclick='document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Continue</button>
+		</div>
+
 		<noscript>
 			<script>
 				alert("Please check your browser!");
