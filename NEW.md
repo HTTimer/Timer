@@ -126,3 +126,4 @@ Everything else
 - Compare to Friends
 - TTW-Like things
 - Clock should have no +2
+- Merge Sessions

@@ -236,7 +236,7 @@ var scramble=(function(){
 			code=[];
 			for(k=0;k<types.length;++k){
 				code.push("<optgroup label='"+scrambler[i][j][k][0]+"'/>");
-				for(l=1;l<scrambler[i][j][k].length;++l)
+				for(l=0;l<scrambler[i][j][k].length;++l)
 					code.push("<option onclick='scramble.draw_step_5("+i+","+j+","+k+","+l+")'>"+scrambler[i][j][k][l]);
 			}
 		}
@@ -409,8 +409,7 @@ var scramble=(function(){
 		var i,j,moves=[],scrambleMoves=[];
 
 		//Check
-		if(turns.length<2)return;
-		if(suffixes.length<1)return;
+		if(turns.length<2||suffixes.length<1)return;
 
 		//Generate list of all permutations of turns and suffixes
 		for(i=0;i<turns.length;++i)
@@ -422,7 +421,8 @@ var scramble=(function(){
 			scrambleMoves.push(rndEl(moves));
 			//Don't turn the same face twice
 			//This means, that it theoretically can have infinite running time :(
-			//@TODO know opposite faces to avoid R L R', base it on suffixes
+			//@TODO know opposite faces to avoid R L R', look ahead 2 moves, when
+			//more than 2 moves are allowed to use for scrambling
 			if(scrambleMoves.length>1&&scrambleMoves[scrambleMoves.length-1][0]==scrambleMoves[scrambleMoves.length-2][0])
 				scrambleMoves.pop();
 		}

@@ -9,7 +9,7 @@ var algSets=(function(){
 	var predefined={
 		//"AlgSetName":"AlgDBSetName,hasAlgDb Algnames CompressedAlgs"
 		//We compress algs to save around 60%, which would be around 200 bytes just for PLL! Compress/Decompress functions are 1Kb total, so worth it for 5+ predefined AlgSets!
-		"PLL":"PLL,1 Aa,Ab,E,F,Ga,Gb,Gc,Gd,H,Ja,Jb,Na,Nb,Ra,Rb,T,Ua,Ub,V,Y,Z YBIBSAJBSC,YCSAIBSAJAZ,ZAJBQAIBRAIBRAJBQY,BJFAIBJBECJBJAIBIA,BJAIRCIBIAJAJCQ,CQcBIBJARGeBIA,AIBJQCJAJBIBICR,CKAKCKCKAKC,VJUEVJUIUFWIU,IAIBFAIBJBECJBJ,AIBIAIBFAIBJBECJBKAJB,BIVKAJUBIVKAJU,UKVKUFVJUIUEW,BKAKBEAIBJBFCJ,AIBJBECJBJAIBF,CIAIBJBJBIB,AJAIAIAJBJC,AKBQAJAJAICQBJAS,EAJBJAIBFAIBJBEAF,BJCIAIBJAIAJAJB"
+		"PLL":"PLL,1 Aa,Ab,E,F,Ga,Gb,Gc,Gd,H,Ja,Jb,Na,Nb,Ra,Rb,T,Ua,Ub,V,Y,Z YBIBSAJBSCZ,YCSAIBSAJAZ,ZAJBQAIBRAIBRAJBQY,BJFAIBJBECJBJAIBIA,BJAIRCIBIAJAJCQ,CQcBIBJARGeBIA,AIBJQCJAJBIBICR,CKAKCKCKAKC,VJUEVJUIUFWIU,IAIBFAIBJBECJBJ,AIBIAIBFAIBJBECJBKAJB,BIVKAJUBIVKAJU,UKVKUFVJUIUEW,BKAKBEAIBJBFCJ,AIBJBECJBJAIBF,CIAIBJBJBIB,AJAIAIAJBJC,AKBQAJAJAICQBJAS,EAJBJAIBFAIBJBEAF,BJCIAIBJAIAJAJB"
 	};
 
 	/*
@@ -84,6 +84,29 @@ var algSets=(function(){
 	}
 
 	/*
+	 * algSets:loadPredefinedAlgSet(id)
+	 * @param id Int ID
+	 */
+	function loadPredefinedAlgSet(id){
+		var content,name,algNames,algS,i,currentSet;
+		content=predefined[id].split(" ");
+		name=content[0];
+		algNames=content[1].split(",");
+		algS=content[2].split(",");
+		i,currentSet;
+
+		sets.push([]);
+		setprops.push({name:name.split(",")[0],hidden:false});
+
+		currentSet=sets.length-1;
+		for(i=0;i<algS.length;++i){
+			sets[currentSet].push({name:algNames[i],alg:math.decompressAlgorithm(algS[i]),flags:{star:false}});
+		}
+
+		display();
+	}
+
+	/*
 	 * algSets:addAlg()
 	 */
 	function addAlg(){
@@ -140,6 +163,7 @@ var algSets=(function(){
 		init:init,
 		display:display,
 		addSet:addSet,
+		loadPredefinedAlgSet:loadPredefinedAlgSet,
 		addAlg:addAlg,
 		removeSet:removeSet,
 		changeSetName:changeSetName,
