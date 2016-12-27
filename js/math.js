@@ -309,11 +309,29 @@ var math=(function(){
 		var dt;
 
 		function addZ(n){
-        return(n<10?'0':'')+n;
-    }
+	        return(n<10?'0':'')+n;
+	    }
 
-    dt=new Date(ms);
-    return dt.getFullYear()+"/"+(dt.getMonth()+1)+"/"+dt.getDate()+" "+addZ(dt.getHours())+':'+addZ(dt.getMinutes())+':'+addZ(dt.getSeconds())+"."+dt.getMilliseconds();
+	    dt=new Date(ms);
+	    return dt.getFullYear()+"/"+(dt.getMonth()+1)+"/"+dt.getDate()+" "+addZ(dt.getHours())+':'+addZ(dt.getMinutes())+':'+addZ(dt.getSeconds())+"."+dt.getMilliseconds();
+	}
+
+	/*
+	 * math:invertAlg(alg)
+	 * @param alg String Algorithm
+	 * @returns alg in reverse
+	 */
+	function invertAlg(alg){
+		var alg=alg.split(" "),i;
+		for(i=0;i<alg.length;++i){
+			if(alg[i][alg[i].length-1]=="2")
+				alg[i][alg[i].length-1]="2";
+			else if(alg[i][alg[i].length-1]=="'")
+				alg[i][alg[i].length-1]="";
+			else
+				alg[i][alg[i].length-1]="'";
+		}
+		return alg.reverse().join` `;
 	}
 
 	return {
@@ -329,6 +347,7 @@ var math=(function(){
 		applyPenalty:applyPenalty,
 		compressAlgorithm:compressAlgorithm,
 		decompressAlgorithm:decompressAlgorithm,
-		formatDate:formatDate
+		formatDate:formatDate,
+		invertAlg:invertAlg
 	}
 })();

@@ -147,6 +147,11 @@ body {
 	background-color:#323232;
 }
 
+.ALGSETS {
+	overflow-y: auto;
+	overflow-x: none;
+}
+
 .LOGO > small {
 	font-size:26px;
 }

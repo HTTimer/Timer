@@ -52,7 +52,8 @@ var scramble=(function(){
 				</span>
 				<span style='float:right;'>
 					<div style="display:table-cell;vertical-align:middle;height:43px;">
-						${html.keycode("t l")} &lt; ${transl("Last scramble")}\&nbsp;\&nbsp;${html.keycode("t n")} ${transl("Next scramble")} &gt;
+						<!--${html.keycode("t l")} &lt; ${transl("Last scramble")}\&nbsp;\&nbsp;-->
+						    ${html.keycode("t n")} <span onclick="scramble.neu();scramble.draw();">${transl("Next scramble")} &gt;</span>
 					</div>
 				</span>
 			</div>`);

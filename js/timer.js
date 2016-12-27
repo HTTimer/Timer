@@ -71,9 +71,9 @@ timer=(function(){
 
 
 			if(config&&!config.version&&!check) //There must be a config.version to have an importable data structure,
-																	//as only HT 4.3.0A and up are supported. Other versions are usable
-																	//using the import function, which is only available in a fully loaded
-																	//timer. Older timers did not have timerExport.version or have it false
+												//as only HT 4.3.0A and up are supported. Other versions are usable
+												//using the import function, which is only available in a fully loaded
+												//timer. Older timers did not have timerExport.version or have it false
 				check=true;
 			else
 				check=false;
@@ -121,6 +121,7 @@ timer=(function(){
 		scramble.neu();
 		scramble.draw();
 
+		//Display Sessions
 		sessions.display();
 
 		//Autosave
@@ -133,7 +134,16 @@ timer=(function(){
 		return JSON.stringify(core.getAll())
 	}
 
+	function exportCsv(){
+		var solves=core.get("config").timeList[core.get("config").currentSession],i,csv="";
+		for(i=0;i<solves.length;++i)
+			csv+=[solves[i].zeit,solves[i].scramble].join(",")+"\n";
+		return csv;
+	}
+
 	return {
-		init:init
+		init:init,
+		exportCode:exportCode,
+		exportCsv:exportCsv
 	}
 })();
