@@ -24,9 +24,9 @@ var keyboard=(function(){
 		Mousetrap.bind("o o",function(){document.getElementsByClassName('OPTIONS')[0].style.display="block";options.display();});
 		Mousetrap.bind("g g",function(){document.getElementsByClassName('GOALS')[0].style.display="block";goals.display();});
 		Mousetrap.bind("a a",function(){document.getElementsByClassName('ALGSETS')[0].style.display="block";algSets.display();});
-		Mousetrap.bind("i i",function(){document.getElementsByClassName('PORT')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("l l",function(){document.getElementsByClassName('LOGIN')[0].style.display="block";algSets.addAlg();algSets.display();});
-		Mousetrap.bind("m m",function(){document.getElementsByClassName('COLLECTION')[0].style.display="block";algSets.addAlg();algSets.display();});
+		Mousetrap.bind("i i",function(){document.getElementsByClassName('PORT')[0].style.display="block";});
+		Mousetrap.bind("l l",function(){document.getElementsByClassName('LOGIN')[0].style.display="block";});
+		Mousetrap.bind("m m",function(){document.getElementsByClassName('COLLECTION')[0].style.display="block";});
 		Mousetrap.bind("p p",function(){document.getElementsByClassName('STATISTICS')[0].style.display="block";stats.display();});
 		Mousetrap.bind("o c",function(){document.getElementsByClassName('OPTIONS')[0].style.display="none";});
 		Mousetrap.bind("g c",function(){document.getElementsByClassName('GOALS')[0].style.display="none";});
@@ -43,7 +43,7 @@ var keyboard=(function(){
 	 * keyboard:displayKeys()
 	 */
 	function displayKeys(){
-			toggle("inline","keycodes");
+		toggle("inline","keycodes");
 	}
 
 	/*

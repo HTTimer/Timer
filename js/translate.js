@@ -49,6 +49,7 @@ var translate=(function(){
 		//translation. The translated english translation is not ordered.
 		var translations={
 			"EN":{
+				"Add set":"Add set",
 				"Alpha Graphic":"Alpha Graphic",
 				"Best":"Best",
 				"Current":"Current",
@@ -57,12 +58,14 @@ var translate=(function(){
 				"Method":"Method",
 				"Next scramble":"Next scramble",
 				"New Session":"New Session",
+				"Remove current set":"Remove current set",
 				"Scramble":"Scramble",
 				"Select scrambler":"Select scrambler",
 				"Statistics":"Statistics",
 				"Time":"Time"
 			},
 			"DE":{
+				"Add set":"Set hinzufügen",
 				"Alpha Graphic":"Alpha Grafisch",
 				"Best":"Bester",
 				"Current":"Aktueller",
@@ -71,6 +74,7 @@ var translate=(function(){
 				"Method":"Methode",
 				"Next scramble":"N&auml;chste Verdrehung",
 				"New Session":"Neue Sitzung",
+				"Remove current set":"Aktuell ausgewähltes Set löschen",
 				"Scramble":"Verdrehung",
 				"Select scrambler":"Scrambler ausw&auml;hlen",
 				"Statistics":"Statistik",

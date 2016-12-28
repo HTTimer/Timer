@@ -8,10 +8,10 @@ var algSets=(function(){
 	var currentSet=0;
 	var predefined={
 		//"AlgSetName":"AlgDBSetName,hasAlgDb Algnames CompressedAlgs"
-		//We compress algs to save around 60%, which would be around 200 bytes just for PLL! Compress/Decompress functions are 1Kb total, so worth it for 5+ predefined AlgSets!
+		//Compression ensures a proper formatted alg after uncompression, and saves spaces and direction characters
 		//These are just for normal AlgSets, you can always load sets from algdb (at least you will be able to later on)
-		"PLL":"PLL,1 Aa,Ab,E,F,Ga,Gb,Gc,Gd,H,Ja,Jb,Na,Nb,Ra,Rb,T,Ua,Ub,V,Y,Z YBIBSAJBSCZ,YCSAIBSAJAZ,ZAJBQAIBRAIBRAJBQY,BJFAIBJBECJBJAIBIA,BJAIRCIBIAJAJCQ,CQcBIBJARGeBIA,AIBJQCJAJBIBICR,CKAKCKCKAKC,VJUEVJUIUFWIU,IAIBFAIBJBECJBJ,AIBIAIBFAIBJBECJBKAJB,BIVKAJUBIVKAJU,UKVKUFVJUIUEW,BKAKBEAIBJBFCJ,AIBJBECJBJAIBF,CIAIBJBJBIB,AJAIAIAJBJC,AKBQAJAJAICQBJAS,EAJBJAIBFAIBJBEAF,BJCIAIBJAIAJAJB",
-		"OLL":"OLL,1 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57 AINAMCJBEAF,EAIBJFkfAIBJkf',cEIAJBFIEAIBJF,cEIAJBFJEAIBJF,VJWFVGJF,eAICEAGIE,VKUKUFVE,AKBKBEAF,cAIBJBECIBJF,AIBIBEAFAKB,kMAIBIAKBIkM,EAIBJFIEAIBJF,EIAKBJAIBF,BEAIBFAEJF,eBFAVJUIBEA,eBEAIBJFAJBKA,AIBIBEAFKBEAF,eEAIBIdBKBEAF,BKEAIBJGKEA,EIAJBFKBJBEAFIA,cAKBJAIBJAJB,AKCJCJCKA,CQBKARBKB,UEBFVEAF,BEANBFAM,eVJUJVKU,AIBIAKB,EAIBJGVJUIE,eBEAFAKBJFJE,CIBNAJCIAMB,BJEIAJBFA,AINJBIAMB,AIBJBEAF,eAIBJNBEAFM,AKDEAFAKB,BJAJBIAIklJBIY,EAJBJAIBF,AIBIAJBJBEAF,cUFVJUIEJV,cBEAIBJFIA,AJBKAIcAJBJF,BJAJBKAEAIBJF,FJVIUE,EIAJBF,EAIBJF,FVJUIVJUIE,EAIBJAIBJF,ANCECMCFA,BECNCFCMB,eEIAJBIAJBF,BJAJBIFIEA,EAIBJAJBIAIBF,FVJUIVIUJVJUE,AKCJAJBKEAF,EAIBJAFUEBFV,AIBJVZBIAJUY",
+		"PLL":"PLL,1 Aa,Ab,E,F,Ga,Gb,Gc,Gd,H,Ja,Jb,Na,Nb,Ra,Rb,T,Ua,Ub,V,Y,Z YBIBSAJBSCZ,YCSAIBSAJAZ,ZAJBQAIBRAIBRAJBQY,BJFAIBJBECJBJAIBIA,BJAIRCIBIAJAJCQ,LOL,CQcBIBJARGeBIA,AIBJQCJAJBIBICR,CKAKCKCKAKC,VJUEVJUIUFWIU,IAIBFAIBJBECJBJ,AIBIAIBFAIBJBECJBKAJB,BIVKAJUBIVKAJU,UKVKUFVJUIUEW,BKAKBEAIBJBFCJ,AIBJBECJBJAIBF,CIAIBJBJBIB,AJAIAIAJBJC,AKBQAJAJAICQBJAS,EAJBJAIBFAIBJBEAF,BJCIAIBJAIAJAJB",
+		"OLL":"OLL,1 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57 AINAMCJBEAF,EAIBJFkfAIBJkf',cEIAJBFIEAIBJF,cEIAJBFJEAIBJF,VJWFVGJF,eAICEAGIE,VKUKUFVE,AKBKBEAF,cAIBJBECIBJF,AIBIBEAFAKB,kMAIBIAKBIkM,EAIBJFIEAIBJF,EIAKBJAIBF,BEAIBFAEJF,eBFAVJUIBEA,eBEAIBJFAJBKA,AIBIBEAFKBEAF,eEAIBIdBKBEAF,BKEAIBJGKEA,EIAJBFKBJBEAFIA,cAKBJAIBJAJB,AKCJCJCKA,CQBKARBKB,UEBFVEAF,BEANBFAM,eVJUJVKU,AIBIAKB,EAIBJGVJUIE,eBEAFAKBJFJE,CIBNAJCIAMB,BJEIAJBFA,AINJBIAMB,AIBJBEAF,eAIBJNBEAFM,AKDEAFAKB,BJAJBIAIklJBIY,EAJBJAIBF,AIBIAJBJBEAF,cUFVJUIEJV,cBEAIBJFIA,AJBKAIcAJBJF,BJAJBKAEAIBJF,FJVIUE,EIAJBF,EAIBJF,BJBEAFIA,FVJUIVJUIE,EAIBJAIBJF,ANCECMCFA,BECNCFCMB,eEIAJBIAJBF,BJAJBIFIEA,EAIBJAJBIAIBF,FVJUIVIUJVJUE,AKCJAJBKEAF,EAIBJAFUEBFV,AIBJVZBIAJUY",
 		"COLL":"COLL,1 H,Pi,U,T,L,Antisune,Sune AKBJAIBJAJB,AKCJCJCKA,CQBKARBKB,UEBFVEAF,BEANBFAM,VJUJVKU,AIBIAKB"
 	};
 
@@ -50,7 +50,7 @@ var algSets=(function(){
 				"Flags",
 				"x",
 				"<span onclick='algSets.toggleStar("+i+");'>"+(sets[currentSet][i].flags.star?"star":"no star")+"</span>",
-				"modify",
+				"<span onclick='algSets.invert("+i+")'>invert</span>",
 				"learn",
 				"practise",
 				"<a href='alg.cubing.net/?setup=&alg=&view=playback' target='_blank'>view</a>",
@@ -58,9 +58,9 @@ var algSets=(function(){
 			);
 		}
 		outhtml+=html.table(outhtml2);
-		outhtml+="<br/><button onclick='algSets.addSet()'>Add set</button>";
-		outhtml+="     <button onclick='algSets.addSet()'>Add set from Algdb.net</button>"
-		outhtml+="<br/><button onclick='algSets.removeSet()'>Remove current set</button>";
+		outhtml+="<br/><button onclick='algSets.addSet()'>"+transl("Add set")+"</button>";
+		outhtml+="     <button onclick='algSets.addSet()'>"+transl("Add set")+" (Algdb.net)</button>"
+		outhtml+="<br/><button onclick='algSets.removeSet()'>"+transl("Remove current set")+"</button>";
 
 		layout.write("ALGSETS",outhtml);
 
@@ -164,6 +164,15 @@ var algSets=(function(){
 		display();
 	}
 
+	/*
+	 * algSets:invert(i)
+	 * @param i int
+	 */
+	function invert(i){
+		sets[currentSet][i].alg=math.invertAlg(sets[currentSet][i].alg);
+		display();
+	}
+
 	return {
 		init:init,
 		display:display,
@@ -175,6 +184,7 @@ var algSets=(function(){
 		changeAlg:changeAlg,
 		changeName:changeName,
 		switchCurrentSet:switchCurrentSet,
-		toggleStar:toggleStar
+		toggleStar:toggleStar,
+		invert:invert
 	}
 })();

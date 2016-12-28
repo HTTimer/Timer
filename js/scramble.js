@@ -122,7 +122,7 @@ var scramble=(function(){
 				["Curvy copter","Jumbled","no jumbling"]
 			]
 		],
-		[[["DNF"]]], //Pentahedron
+		[[["Crazy Pentahedron (all types) (TODO)"]]], //Pentahedron
 		[[["Octahedron","FTO","CTO"]]], //Octahedron
 		[ //Dodecahedron
 			[ //12 axis
@@ -135,15 +135,15 @@ var scramble=(function(){
 				["Examinx"]
 			],
 			[ //20 axis
-				["DNF"]
+				["Bauhinia Dodecahedron (TODO)"]
 			]
 		],
-		[
-			[
+		[ //Other
+			[ //Relay
 				["Cubic Relay","2x2-3x3","2x2-4x4","2x2-5x5","2x2-6x6","2x2-7x7","2x2-8x8","2x2-9x9"],
 				["Other Relay","Minx","2x2, 3x3, Pyra, Skewb","WCA","Parity"]
 			]
-		] //Other
+		]
 	];
 	//Convert index of array to scrambler type id
 	var scramblerTypes=[
@@ -181,28 +181,28 @@ var scramble=(function(){
 				["Curvy copter","CurvyJumb","Curvy"]
 			]
 		],
-		[[["DNF"]]], //Pentahedron
+		[[["CRPT"]]], //Pentahedron
 		[[["Octahedron","FTO","CTO"]]], //Octahedron
 		[ //Dodecahedron
 			[ //12 axis
-				["Kilominx"],
+				["Kilo"],
 				["Mega"],
-				["Master Kilominx"],
+				["MKilo"],
 				["Giga"],
 				["Tera"],
 				["Peta"],
 				["Exa"]
 			],
 			[ //20 axis
-				["DNF"]
+				["BHDOD"]
 			]
 		],
-		[
+		[ //Other
 			[
 				["Cubic Relay","Relay 222,333","Relay 222,333,444","Relay 222,333,444,555","Relay 222,333,444,555,666","Relay 222,333,444,555,666,777","Relay 222,333,444,555,666,777 888",,"Relay 222,333,444,555,666,777,888,999"],
 				["Other Relay","Relay Pyra,Mega,Skewb","Relay 222,333,Pyra,Skewb","Relay 222,333,444,555,666,777,333,333BLD,444BLD,555BLD,Square1,Skewb,Clock,Mega,Pyra,333","Relay 444,666,Square1"]
 			]
-		] //Other
+		]
 	];
 
 	function draw_step_1(){
@@ -292,7 +292,9 @@ var scramble=(function(){
 			"C6":["R","U","F","D","B","L","r","u","f","d","b","l","3r","3u","3f"],
 			"C7":["R","U","F","D","B","L","r","u","f","d","b","l","3r","3u","3f","3d","3b","3l"],
 			"D0":["y","y'","y2","y2'"],
+			"D2":["R","D"],
 			"D3":["R","D"],
+			"D4":["R","D","r","d"],
 			"D5":["R","D","r","d"],
 			"D7":["R","D","r","d","3r","3d"],
 			"D9:":["R","D","r","d","3r","3d","4r","4d"],
@@ -335,6 +337,8 @@ var scramble=(function(){
 			"777sh":[scramble,[moves.C7,cubicSuffix,110]],
 
 			//Minxes
+			"Kilo":[scrambleMega,[moves.D2,moves.D0,10,5]],
+			"MKilo":[scrambleMega,[moves.D4,moves.D0,15,5]],
 			"Giga":[scrambleMega,[moves.D5,moves.D0,20,5]],
 			"Tera":[scrambleMega,[moves.D7,moves.D0,20,10]],
 			"Peta":[scrambleMega,[moves.D9,moves.D0,20,15]],

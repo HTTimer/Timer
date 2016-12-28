@@ -40,7 +40,7 @@ timer=(function(){
 		//Try to load data from previous sessions
 		//Old versions saves will not get lost, as they save in HTexport, while we
 		//save in HTExport and HTAutoSave
-		check=false;
+		/*check=false;
 		do{
 			if(!localStorage.HTExport||check){
 				if(localStorage.HTAutoSave.length>100){
@@ -77,7 +77,27 @@ timer=(function(){
 				check=true;
 			else
 				check=false;
-		}while(check);
+		}while(check);*/
+
+		//TEST MODE ONLY: Always start new Session
+		config={
+			timeList:[[]],
+			currentScrambler:"333",
+			customScramblerList:[],
+			algSets:[],
+			goals:[],
+			sessionData:[
+				{
+					phases:1,
+					inspection:15,
+					name:transl("New Session"),
+					solveType:"normal",
+					method:"",
+					scrambleType:"333"
+				}
+			],
+			currentSession:0
+		};
 
 		//Set some variables
 		//Set variables using core.set (and core.get to get them) are NOT const and will be exported.
@@ -97,15 +117,16 @@ timer=(function(){
 			}
 		}
 
-		layout.write("BOTTOMMENU",`<div class="bottom-menu" onclick="Mousetrap.trigger('o');"><span class="keycodes">o o</span> Options</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('g g');"><span class="keycodes">g g</span> Goals</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('a a');"><span class="keycodes">a a</span> AlgSets</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('i i');"><span class="keycodes">i i</span> Import/Export</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('l l');"><span class="keycodes">l l</span> Login</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('m m');"><span class="keycodes">m m</span> Collection</div>
-			<div class="bottom-menu" onclick="Mousetrap.trigger('p p');"><span class="keycodes">p p</span> Statistics</div>`);
+		layout.write("BOTTOMMENU",`<div class="bottom-menu" onclick="Mousetrap.trigger('o');"><span class="keycodes">o o (open)/o c (close)</span> Options</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('g g');"><span class="keycodes">g g (open) g c (close)</span> Goals</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('a a');"><span class="keycodes">a a/a c</span> AlgSets</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('i i');"><span class="keycodes">i i/i c</span> Import/Export</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('l l');"><span class="keycodes">l l/l c</span> Login</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('m m');"><span class="keycodes">m m/m c</span> Collection</div>
+			<div class="bottom-menu" onclick="Mousetrap.trigger('p p');"><span class="keycodes">p p/p c</span> Statistics</div>`);
 		layout.write("LOGO",`HTTimer <small onclick="cmd.switchToText()">V${version} ${transl("Alpha Graphic")}</small>`);
 		layout.write("TIME",`<span class="keycodes">space</span>0.000`);
+		layout.write("PORT",`<button onclick="alert(timer.exportCsv());">Export CSV</button>`);
 
 		//Initialize components
 		counter .init();
