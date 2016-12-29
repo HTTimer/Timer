@@ -53,7 +53,7 @@ var algSets=(function(){
 				"<span onclick='algSets.invert("+i+")'>invert</span>",
 				"learn",
 				"practise",
-				"<a href='alg.cubing.net/?setup=&alg=&view=playback' target='_blank'>view</a>",
+				"<span onclick='algSets.algCubingNet("+i+")'>view</span>",
 				"help"
 			);
 		}
@@ -173,6 +173,15 @@ var algSets=(function(){
 		display();
 	}
 
+	/*
+	 * algSets:algCubingNet(i)
+	 * @param i int
+	 */
+	function algCubingNet(i){
+		var alg=sets[currentSet][i].alg;
+		document.write('<iframe src="https://alg.cubing.net/?alg='+alg+'&setup='+math.invertAlg(alg)+'&view=fullscreen" width="800" height="550"></iframe>');
+	}
+
 	return {
 		init:init,
 		display:display,
@@ -185,6 +194,7 @@ var algSets=(function(){
 		changeName:changeName,
 		switchCurrentSet:switchCurrentSet,
 		toggleStar:toggleStar,
-		invert:invert
+		invert:invert,
+		algCubingNet:algCubingNet
 	}
 })();
