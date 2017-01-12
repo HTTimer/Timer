@@ -75,10 +75,19 @@
 
 		<div id="begin">
 			<h2>Welcome to HTTimer!</h2>
+			<h3>Setup Sessions</h3>
+			HTTimer can setup your data to save time when actually using it. Select, for which events you want to have a session. Each session will have the correct scrambler and inspection time. FMC sessions will get a 60 minute counter.
 			<br/>
-			This is a Alpha version. Some features may not work.
+			<div class="SETUP"></div>
 			<br/>
-			<button onclick='document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Continue</button>
+			<h3>Setup languages</h3>
+			Select your language:<br/>
+			<select>
+				<option onclick="translate.currentLanguage='EN';">English</option>
+				<option onclick="translate.currentLanguage='DE';">German</option>
+			</select>
+			<br/><br/>
+			<button onclick='timer.setup();document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Setup</button>
 		</div>
 
 		<noscript>
@@ -86,7 +95,7 @@
 				alert("Please check your browser!");
 			</script>
 			Please enable Javascript.
-			https://davidwalsh.name/supporting-internet-explorer
+			<!--https://davidwalsh.name/supporting-internet-explorer-->
 		</noscript>
 	</body>
 </html>

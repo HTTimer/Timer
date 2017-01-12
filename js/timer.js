@@ -19,7 +19,7 @@ timer=(function(){
 	var version="4.3.0A";
 
 	function init(){
-		var i,config,check;
+		var i,config,check,html;
 
 		//Let the server check, whether the user is logged in. Assume, the user is not, in case it fails.
 		core.set("login",false);
@@ -149,6 +149,13 @@ timer=(function(){
 		setInterval(function(){
 			localStorage.HTAutoSave=JSON.stringify(core.getAll());
 		},5e3);
+
+		//Setup
+		html="",i;
+		const WCA_EVENTS=["2x2","3x3","4x4","5x5","6x6","7x7","Pyraminx","Megaminx","Onehanded","3x3 BLD","4x4 BLD","5x5 BLD","3x3 MBLD","Square-1","Skewb","3x3 Fewest moves"];
+		for(i=0;i<WCA_EVENTS.length;++i)
+			html+="<input type='checkbox' id='setup-event-"+i+"' checked/>"+WCA_EVENTS[i]+"<br/>";
+		layout.write("SETUP",html);
 	}
 
 	function exportCode(){
@@ -162,9 +169,23 @@ timer=(function(){
 		return csv;
 	}
 
+	function setup(){
+		const WCA_EVENTS=["2x2","3x3","4x4","5x5","6x6","7x7","Pyraminx","Megaminx","Onehanded","3x3 BLD","4x4 BLD","5x5 BLD","3x3 MBLD","Square-1","Skewb","3x3 Fewest moves"];
+		const WCA_SCRAMBLER=["222","333","444","555","666sh","777sh","Pyra","Mega","333","333","444","555","333","Square1","Skewb","333"];
+		var i;
+		for(i=0;i<WCA_EVENTS.length;++i){
+			if(document.getElementById("setup-event-"+i).checked){
+				sessions.create(1,(~~WCA_EVENTS[i].search("BLD")?0:15),WCA_EVENTS[i],"normal","",WCA_SCRAMBLER[i]);
+			}
+		}
+		sessions.switchS(2);
+		sessions.display();
+	}
+
 	return {
 		init:init,
 		exportCode:exportCode,
-		exportCsv:exportCsv
+		exportCsv:exportCsv,
+		setup:setup
 	}
 })();

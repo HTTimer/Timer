@@ -179,7 +179,7 @@ var algSets=(function(){
 	 */
 	function algCubingNet(i){
 		var alg=sets[currentSet][i].alg;
-		document.write('<iframe src="https://alg.cubing.net/?alg='+alg+'&setup='+math.invertAlg(alg)+'&view=fullscreen" width="800" height="550"></iframe>');
+		layout.write("ALGSETS",'<iframe src="https://alg.cubing.net/?alg='+alg+'&setup='+math.invertAlg(alg)+'&view=fullscreen" width="800" height="550"></iframe>');//77.247.30.42
 	}
 
 	return {

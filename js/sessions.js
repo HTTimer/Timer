@@ -38,25 +38,25 @@ var sessions=(function(){
 				method=["LbL","Verasano","CLL","EG","TCLL","Guimond","OFOTA","VOP","SS"];
 				break;
 			case "333":
-				method=["CFOP","LbL","Roux","Petrus","ZZ","Heise","Synder","SSC","Briggs2","Waterman","Tripod","L2L","CFCE","FreeFop","8355","Keyhole","XG","Samsara"];
+				method=["CFOP","LbL","Roux","Petrus","ZZ","Heise","Synder","SSC","Briggs2","Waterman","Tripod","L2L","CFCE","FreeFop","8355","Keyhole","XG","Samsara","Sandwich","TICT","Belt","Salvia","Triangular Franscisco","Hahn","Human Thistlethwaite"];
 				break;
 			case "444":
-				method=["LbL","Yau","Redux","HoYa","Cage","K4","Z4","Sandwich","Js4"];
+				method=["LbL","Yau","Redux","HoYa","Cage","K4","Z4","Sandwich","Js4","Meyer","Stadler"];
 				break;
 			case "555":case "666":case "777":
 				method=["Redux","LbL","Yau5","HoYa","Cage","Meyer"];
 				break;
 			case "Mega":
-				method=["Balint","Beginner","Keyhole"];
+				method=["Balint","Beginner","Westlund"];
 				break;
 			case "Pyra":
-				method=["Corners first","Layer first","L4E","Petrus","Face permute","WO","Oka","Nutella"];
+				method=["Petrus","Keyhole","WO","Oka","Nutella","LbL","IWO","OFF","Matthew Flay","Half-backbone","Backbone","MN","FP","L4E","V-First"];
 				break;
 			case "Square1":
 				method=["SSS1M","Vandenbergh","Roux","Skwuction","Yoleberry","COEOCPEP"];
 				break;
 			case "Skewb":
-				method=["Sarah","Ranzha","1 Algorithm","Kirjava-Meep","ITC","Skrouxb"];
+				method=["Sarah","Ranzha","1 Algorithm","Kirjava-Meep","ITC","Skrouxb","Acubist's"];
 				break;
 			default:
 				method="not available for current scrambler";
@@ -90,16 +90,29 @@ var sessions=(function(){
 	 */
 	function create(){
 		core.get("config").timeList.push([]);
-		core.get("config").sessionData.push(
-			{
-				phases:1,
-				inspection:15,
-				name:transl("New Session"),
-				solveType:"normal",
-				method:"",
-				scrambleType:core.get("optDefaultScrambleTypeForNewSession")
-			}
-		); //See timer.js, try to load data, do if if else, config
+		if(arguments.length==0){
+			core.get("config").sessionData.push(
+				{
+					phases:1,
+					inspection:15,
+					name:transl("New Session"),
+					solveType:"normal",
+					method:"",
+					scrambleType:core.get("optDefaultScrambleTypeForNewSession")
+				}
+			); //See timer.js, try to load data, do if if else, config
+		}else{
+			core.get("config").sessionData.push(
+				{
+					phases:arguments[0],
+					inspection:arguments[1],
+					name:arguments[2],
+					solveType:arguments[3],
+					method:arguments[4],
+					scrambleType:arguments[5]
+				}
+			);
+		}
 		switchS(core.get("config").timeList.length-1);
 		display();
 	}
@@ -110,6 +123,9 @@ var sessions=(function(){
 	 * switch to Session to
 	 */
 	function switchS(to){
+		//Prevent switching to the same session and regenerating the scramble
+		if(core.get("config").currentSession==to)return false;
+
 		core.get("config").currentSession=to;
 		//Some things need to do some init actions
 		scramble.sessionSwitchInit();
