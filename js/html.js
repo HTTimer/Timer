@@ -2,11 +2,11 @@
  * html.js
  */
 
-var html=(function(){
+var html = (function() {
 	/*
 	 * html:Init()
 	 */
-	function init(){
+	function init() {
 
 	}
 
@@ -15,14 +15,15 @@ var html=(function(){
 	 * @params contents of tds
 	 * @returns html tr with tds inside
 	 */
-	function tr(){
-		var total="",i;
+	function tr() {
+		var total = "",
+			i;
 
-		for(i=0;i<arguments.length;++i){
-			total+="<td>"+arguments[i]+"</td>";
+		for (i = 0; i < arguments.length; ++i) {
+			total += el("td", arguments[i]);
 		}
 
-		return "<tr>"+total+"</tr>";
+		return el("tr", total);
 	}
 
 	/*
@@ -30,8 +31,8 @@ var html=(function(){
 	 * @param tr Code for all trs
 	 * @returns a html table containig the trs from tr
 	 */
-	function table(tr){
-		return "<table>"+tr+"</table>";
+	function table(tr) {
+		return el("table", tr);
 	}
 
 	/*
@@ -39,8 +40,8 @@ var html=(function(){
 	 * @param val Code for td
 	 * @returns a td containing val
 	 */
-	function td(val){
-		return "<td>"+val+"</td>";
+	function td(val) {
+		return el("td", val);
 	}
 
 	/*
@@ -49,12 +50,12 @@ var html=(function(){
 	 * @param val String|Int value
 	 * @returns a elm containing val
 	 */
-	function el(elm,val){
-		if(elm=="br"||elm=="hr")
-			return "<"+elm+"/>";
-		if(val=="")
-			return "<"+elm+"/>";
-		return "<"+elm+">"+val+"</"+elm+">";
+	function el(elm, val) {
+		if (elm == "br" || elm == "hr")
+			return "<" + elm + "/>";
+		if (val == "")
+			return "<" + elm + "/>";
+		return "<" + elm + ">" + val + "</" + elm + ">";
 	}
 
 	/*
@@ -62,15 +63,15 @@ var html=(function(){
 	 * @param id Id for element to toggle visibility
 	 * This function shouldn't be here
 	 */
-	function toggle(id){
-		var elem=document.getElementById(id);
-		if(elem.style.display!=""){
-			if(elem.style.display=="none")
-				elem.style.display="block";
+	function toggle(id) {
+		var elem = document.getElementById(id);
+		if (elem.style.display != "") {
+			if (elem.style.display == "none")
+				elem.style.display = "block";
 			else
-				elem.style.display="none";
-		}else{
-			elem.style.display="block";
+				elem.style.display = "none";
+		} else {
+			elem.style.display = "block";
 		}
 	}
 
@@ -79,17 +80,17 @@ var html=(function(){
 	 * @param code String
 	 * @return HTML containg the keycode with a class, which makes it display on pressing alt
 	 */
-	function keycode(code){
-		return '<span class="keycodes">'+code+'</span>'
+	function keycode(code) {
+		return '<span class="keycodes">' + code + '</span>'
 	}
 
 	return {
-		init:init,
-		tr:tr,
-		td:td,
-		table:table,
-		toggle:toggle,
-		el:el,
-		keycode:keycode
+		init: init,
+		tr: tr,
+		td: td,
+		table: table,
+		toggle: toggle,
+		el: el,
+		keycode: keycode
 	}
 })();

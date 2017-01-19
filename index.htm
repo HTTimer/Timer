@@ -49,6 +49,9 @@
 			</div>
 			<div class="component component-logo LOGO"></div>
 			<div class="component component-bottom BOTTOMMENU"></div>
+			<!--
+			Now define the containers for features, which will be above the regular timer
+			-->
 			<div class="options ALGSETS"></div>
 			<div class="options GOALS"></div>
 			<div class="options PORT"></div>
@@ -58,8 +61,23 @@
 			<div class="options LAYOUT"></div>
 			<div class="options COLLECTION"></div>
 			<div class="options STATISTICS"></div>
-
-			<div id="dropdown-wca" onmouseout="html.toggle('dropdown-wca');"></div>
+			<!--
+			Components addable to the timer, normally hidden, with absolute positioning, but not full size
+			Bee bee bee!
+			-->
+			<div class="STACKMAT hidden" id="stackmat-base"><!-- @TODO add option for hidden -->
+				<img src="https://lh4.ggpht.com/WDeNuUqNfaI5w2GxL2JaMpVJcdZRLA2hPadVbP_d8p4Cwh8qXUveEvVQC9HAVq30zmvS=w300" width="180" id="stackmat-left" onclick="javascript:if(timer.running){stop();}else{start()};"/>
+				<img src="https://lh4.ggpht.com/WDeNuUqNfaI5w2GxL2JaMpVJcdZRLA2hPadVbP_d8p4Cwh8qXUveEvVQC9HAVq30zmvS=w300" width="180" id="stackmat-right" onclick="javascript:if(timer.running){stop();}else{start()};"/>
+				<div id="stackmat-displays">
+					<div id="stackmat-display" class="TIME">0.000</div>
+					<div id="stackmat-reset" onclick="document.getElementById('stackmat-display').innerHTML='0.000';">&nbsp;</div>
+					<div id="stackmat-on" onclick="document.getElementById('stackmat-display').innerHTML='';">&nbsp;</div>
+					<div id="stackmat-leds">
+						<div id="stackmat-greenled">&nbsp;</div>
+						<div id="stackmat-redled">&nbsp;</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!--
@@ -79,15 +97,18 @@
 			HTTimer can setup your data to save time when actually using it. Select, for which events you want to have a session. Each session will have the correct scrambler and inspection time. FMC sessions will get a 60 minute counter.
 			<br/>
 			<div class="SETUP"></div>
-			<br/>
+			<!--<br/>
 			<h3>Setup languages</h3>
 			Select your language:<br/>
 			<select>
 				<option onclick="translate.currentLanguage='EN';">English</option>
 				<option onclick="translate.currentLanguage='DE';">German</option>
-			</select>
+			</select>-->
 			<br/><br/>
-			<button onclick='timer.setup();document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Setup</button>
+			<div style="width:80%;">
+				<button class="half-width" onclick='timer.setup();document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Setup</button>
+				<button class="half-width" onclick='document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Continue without Setup (not recommended)</button>
+			</div>
 		</div>
 
 		<noscript>
@@ -95,7 +116,9 @@
 				alert("Please check your browser!");
 			</script>
 			Please enable Javascript.
-			<!--https://davidwalsh.name/supporting-internet-explorer-->
+			<!--https://davidwalsh.name/supporting-internet-explorer
+	R2 F2 U2 R F U2 F R' U2 R2 U' 1.272
+		-->
 		</noscript>
 	</body>
 </html>

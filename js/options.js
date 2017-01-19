@@ -2,48 +2,53 @@
  * options.js
  */
 
-var options=(function(){
+var options = (function() {
 	/*
 	 * options:Init()
 	 */
-	function init(){
+	function init() {
 		addCategory("Display");
 		addCategory("Timer");
-		addCategory("Tool");
+		addCategory("Layout");
 		addCategory("Scramble");
 		addCategory("Statistics");
 
-		addOption(0,"Hide scramble when timing",1,["core.set('optHideScrambleWhenTiming',true)","core.set('optHideScrambleWhenTiming',false)",false]);
-		addOption(0,"Show milliseconds",1,["core.set('optUseMilliseconds',true)","core.set('optUseMilliseconds',false)",true]);
+		addOption(0, "Hide scramble when timing", 1, ["core.set('optHideScrambleWhenTiming',true)", "core.set('optHideScrambleWhenTiming',false)", false]);
+		addOption(0, "Show milliseconds", 1, ["core.set('optUseMilliseconds',true)", "core.set('optUseMilliseconds',false)", true]);
 
-		addOption(1,"Use Inspection",1,[",",",",true]);
+		addOption(2, "Show scramble select", 1, ["core.set('optHideScrambleBar',false);", "core.set('optHideScrambleBar',true);", false]);
+		addOption(2, "Show virtual stackmat timer", 1, ["document.getElementById('stackmat-base').style.display='block';", "document.getElementById('stackmat-base').style.display='none';", false]);
 
-		addOption(3,"Default scramble type for new Session",0,"");
+		addOption(1, "Use Inspection", 1, [",", ",", true]);
 
-		core.set("optUseMilliseconds",true);
-		core.set("optHideScrambleWhenTiming",false);
+		addOption(3, "Default scramble type for new Session", 0, "");
 
-		core.set("optUseInspection",true);
+		core.set("optUseMilliseconds", true);
+		core.set("optHideScrambleWhenTiming", false);
 
-		core.set("optDefaultScrambleTypeForNewSession","333");
+		core.set("optHideScrambleBar", true);
+
+		core.set("optUseInspection", true);
+
+		core.set("optDefaultScrambleTypeForNewSession", "333");
 	}
 
-	var currentCategory=0;
+	var currentCategory = 0;
 
 	/*
 	 * options:display(c)
 	 * @param c CategoryID, optional, defaults to 0
 	 */
-	function display(c){
-		var code,i;
-		if(!c)c=currentCategory||0;
-		code="<table class='striped'><tr>";
-		for(i=0;i<categories.length;++i){
-			code+="<td onclick='options.display("+i+");'>"+categories[i]+"</td>";
+	function display(c) {
+		var code, i;
+		if (!c) c = currentCategory || 0;
+		code = "<table class='striped'><tr>";
+		for (i = 0; i < categories.length; ++i) {
+			code += "<td onclick='options.display(" + i + ");'>" + categories[i] + "</td>";
 		}
-		code+="</tr></table><br/><table>";
-		code+=options[c]+"</table>";
-		layout.write("OPTIONS",code);
+		code += "</tr></table><br/><table>";
+		code += options[c] + "</table>";
+		layout.write("OPTIONS", code);
 	}
 
 	/*
@@ -54,31 +59,32 @@ var options=(function(){
 	 * @param affect String|Array[affect] Javascript-code to do, may not contain ", ` and '
 	 * Switch: affect is [1,2,3], 3 is default value (true=checked), 1 is action when switch is on, 2 when off
 	 */
-	var options=[];
+	var options = [];
 
-	function addOption(cid,name,type,affect){
-		var code="<tr><td>"+name+"</td><td>";
-		if(type==0)
-			code+="<button onclick='"+affect+"'>"+name+"</button>";
-		if(type==1)
-			code+='<label class="switch"><input type="checkbox"'+(affect[2]==true?" checked ":" ")+'onclick="if(this.checked){'+affect[0]+'}else{'+affect[1]+'}"><div class="slider round"></div></label>';
-		code+="</td></tr>";
-		options[cid]+=code;
+	function addOption(cid, name, type, affect) {
+		var code = "<tr><td>" + name + "</td><td>";
+		if (type == 0)
+			code += "<button onclick='" + affect + "'>" + name + "</button>";
+		if (type == 1)
+			code += '<label class="switch"><input type="checkbox"' + (affect[2] == true ? " checked " : " ") + 'onclick="if(this.checked){' + affect[0] + '}else{' + affect[1] + '}"><div class="slider round"></div></label>';
+		code += "</td></tr>";
+		options[cid] += code;
 	}
 
 	/*
 	 * options:addCategory()
 	 */
-	var categories=[];
-	function addCategory(name){
+	var categories = [];
+
+	function addCategory(name) {
 		categories.push(name);
 		options.push("");
 	}
 
 	return {
-		init:init,
-		display:display,
-		currentCategory:currentCategory,
-		options:options
+		init: init,
+		display: display,
+		currentCategory: currentCategory,
+		options: options
 	}
 })();
