@@ -79,20 +79,21 @@ var stats = (function() {
 		currentBig = i;
 		var code = "",
 			solve = core.get("config").timeList[core.get("config").currentSession][i];
-		code = "<table cellspacing='0' cellpadding='0'><tr><td onclick='stats.showDetails(" + i + ")'>Details<br><!--UWR--><br>" +
-			(solve.flags.fake ? "Fake" : "\&nbsp;") +
-			"</td><th>" + math.formatPenalty(solve) + "</th><td>#" + (i + 1) + "<br/><span onclick='stats.togglePenalty(" + i + ",2)'>"
+		code = "<table cellspacing='0' cellpadding='0'><th>" + math.formatPenalty(solve) + "</th><td>#" + (i + 1) + "<br/><span onclick='stats.togglePenalty(" + i + ",2)'>"
 		if (solve.penalty == 2000)
-			code += "<u>+2</u>";
+			code += "<b>+2</b>";
 		else
 			code += "+2";
 		code += "</span><br/><span onclick='stats.togglePenalty(" + i + ",-1)'>"
 		if (solve.penalty == -1)
-			code += "<u>DNF</u>";
+			code += "<b>DNF</b>";
 		else
 			code += "DNF";
-		code += "</span></td></tr></table>";
+		code += "</span></td><td onclick='stats.showDetails(" + i + ")'>Details<br><!--UWR--><br>" +
+			(solve.flags.fake ? "Fake" : "\&nbsp;") +
+			"</td></table>";
 		layout.write("TIME", code);
+		layout.write("FLAGS", "");
 	}
 
 	/*
@@ -100,7 +101,7 @@ var stats = (function() {
 	 * @param i Int SolveID
 	 */
 	function showDetails(i) {
-		var solve, flags, i, code;
+		var solve, flags, i, j, code;
 		solve = core.get("config").timeList[core.get("config").currentSession][i],
 
 			//Compute flags
@@ -111,6 +112,7 @@ var stats = (function() {
 
 		if (solve.scrambletype == "Pyra")
 			flags.push("0 Tips", "1 Tip", "2 Tips", "3 Tips", "4 Tips");
+		//@TODO Generate this from scramble
 
 		if (solve.scrambletype == "444" ||
 			solve.scrambletype == "666" ||
@@ -140,9 +142,11 @@ var stats = (function() {
 		code += "End date: " + math.formatDate(solve.endTime) + "<br/>";
 		code += "<br/>";
 
+		j = i;
+
 		//Display Flags
-		for (i = 0; i < flags.length; ++i)
-			code += "<input type='checkbox'" + (solve.flags[i] ? " checked" : "") + "/>" + flags[i] + "\&nbsp;";
+		//for (i = 0; i < flags.length; ++i)
+		//code += "<input type='checkbox'" + (solve.flags[i] ? " checked" : "") + " onclick='core.get(\"config\").timeList[core.get(\"config\").currentSession][" + j + "].flags." + flags[i] + "=!core.get(\"config\").timeList[core.get(\"config\").currentSession][" + j + "].flags." + flags[i] + ";'/>" + flags[i] + "\&nbsp;";
 
 		layout.write("FLAGS", code);
 	}

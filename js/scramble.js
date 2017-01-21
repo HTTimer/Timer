@@ -442,9 +442,10 @@ var scramble = (function() {
 	 * @param length
 	 * @return scramble
 	 */
-	function scramble(turns, suffixes, length) {
+	function scramble(turns, suffixes, length, oppositeTable) {
 		var i, j, moves = [],
 			scrambleMoves = [];
+		if (!oppositeTable) oppositeTable = {};
 
 		//Check
 		if (turns.length < 2 || suffixes.length < 1) return;
@@ -461,7 +462,9 @@ var scramble = (function() {
 			//This means, that it theoretically can have infinite running time :(
 			//@TODO know opposite faces to avoid R L R', look ahead 2 moves, when
 			//more than 2 moves are allowed to use for scrambling
-			if (scrambleMoves.length > 1 && scrambleMoves[scrambleMoves.length - 1][0] == scrambleMoves[scrambleMoves.length - 2][0])
+			if (scrambleMoves.length > 1 && oppositeTable[scrambleMoves[scrambleMoves.length - 1][0]] == scrambleMoves[scrambleMoves.length - 2][0])
+				scrambleMoves.pop();
+			if (scrambleMoves.length > 2 && scrambleMoves[scrambleMoves.length - 1][0] == scrambleMoves[scrambleMoves.length - 2][0])
 				scrambleMoves.pop();
 		}
 		return scrambleMoves.join(" ");

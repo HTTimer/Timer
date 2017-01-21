@@ -13,7 +13,7 @@ Do a solve
 Change scrambler
 --
 
-1. Activate the UI for changing scramblers. This step has to be done once.
+1. Activate the UI for changing scramblers. This step has to be done only once per session.
   1. Press `oo` to go to the options.
   2. Select "Layout" by clicking it.
   3. Select "Show scramble select".
@@ -27,7 +27,7 @@ Change scrambler
 Generate the next scramble without timing
 --
 
-1. Activate the UI for next scramble. This step has to be done once.
+1. Activate the UI for the next scramble. This step has to be done only once per session.
   1. Press `oo` to go to the options.
   2. Select "Layout" by clicking it.
   3. Select "Show scramble select".

@@ -51,8 +51,8 @@ body {
 
 .component-middle {
 	top: 30%;
-	right: 35%;
-	left: 35%;
+	left: 26%;
+	right:30%;
 	border: none;
 }
 
@@ -368,13 +368,9 @@ table {
 }
 
 .TIME table tbody tr td {
-	font-size: 26px;
+	font-size: 42px;
 	padding-left: 10px;
 	color: #444444;
-}
-
-.TIME table tbody tr td:hover {
-	color: black;
 }
 
 .TIME table tbody th {
