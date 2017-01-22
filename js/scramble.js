@@ -402,6 +402,9 @@ var scramble = (function() {
 			}
 			type = type2;
 			definition = [ret, [relayScramble.join("<br/>")]];
+		} else if (type.split(" ")[0] == "ALG") {
+			//Custom scrambler for practising Algsets
+			definition = [ret, [algSets.sets[core.get("algCountingData")[0]][core.get("algCountingData")[1]].alg]];
 		}
 
 		//Call scramble function

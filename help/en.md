@@ -18,6 +18,7 @@ Change scrambler
   2. Select "Layout" by clicking it.
   3. Select "Show scramble select".
   4. Press `oc` to leave options.
+  5. Generate a new scramble.
 2. Press "Select scrambler".
 3. Select the puzzle type.
 4. Select the number of faces.
@@ -32,6 +33,7 @@ Generate the next scramble without timing
   2. Select "Layout" by clicking it.
   3. Select "Show scramble select".
   4. Press `oc` to leave options.
+  5. Generate a new scramble.
 2. Press the button "Next scramble >".
 
 Create a new session
@@ -50,3 +52,13 @@ Check how many solves are in the current session
 1. Press `p p` to go to statistics
 2. The first line tells you the information. "Generating statistics for current session with {NR_OF_SOLVES} solves"
 3. Press `p c` to go back.
+
+Practise an Algorithm
+--
+
+1. Locate the algorithm in an algSet, or create a new AlgSet and add the alg there.
+2. Press Practise. This closes the AlgSets window automatically.
+3. You now see your alg as the scramble.
+4. Do solves like you normally would do.
+5. Press `a a` to enter AlgSets, select the set containing the algorithm and you will see your average instead of DNF there.
+Note: If you have the same algorithm in multiple AlgSets, you have to time for each individually. This will be fixed in a later version.

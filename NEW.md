@@ -45,6 +45,7 @@ Options
 - Allow +2 and DNF on old solves
 - Max inspection time
 - alert on pb
+- Enable Clock +2
 
 Layout edit
 -----------
@@ -65,6 +66,7 @@ Scrambler
 - Predefined Relays: 2-8,2-9,2-10,2-11,2-11+13,Guildford,Mini Guildford,23PyraSkewb
 - Relay must have 2 or more puzzles
 - Option for most Relay puzzles, default 64, may be set from 2 to 32768 (to around 1 sec of scrambling 3x3)
+- Choose scrambler by ID
 
 UI
 --
@@ -80,12 +82,11 @@ Diagrams
 
 AlgSets
 -------
-- Practise AlgSets or parts of an AlgSet (select multiple algs)
+- Practise parts of an AlgSet (select multiple algs)
 - Learn Alg
-- View AlgSet at alg.cubing.net
 - Rotate alg by x,y,z,x2,y2,z2,x',y',z'
 - Predefined AlgSets: OLL,F2L,CLL,BigCubeParity,WV + Login - SummerVariation,VLS,ZBLL,EG1,EG2,TCLL+,TCLL-
-- Load Predefined AlgSets
+- View AlgSet at alg.cubing.net
 
 Export/Import
 -------------
@@ -97,14 +98,13 @@ Export/Import
 - Import from sessionStorage
 - Import from CSV
 - Import from Server
+- Sitzungen beim Import erkennen
+
 
 PBs
 ---
-- PB History
 - PB Import
 - Msg on PB
-- Sitzungen erkennen
-
 
 Tools
 -----

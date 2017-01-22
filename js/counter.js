@@ -59,28 +59,34 @@ var counter = (function() {
 				}
 
 				//Add solve to current Session
-				core.get("config").timeList[core.get("config").currentSession].push({ //We won't land here before a solve was done, as currentStage is initialized
-					//as 0 and we increment it by 1 before executing this case
-					startTime: startTime + 1,
-					endTime: endTime,
-					currentInspection: (startTime - currentInspection),
-					zeit: (endTime - startTime),
-					penalty: ((startTime - currentInspection) > 14999 ? 2000 : 0),
-					flags: {
-						fake: fake,
-						uwr: false,
-						overinspect: (startTime - currentInspection) > 14999
-					},
-					scramble: scramble.getScramble(),
-					scrambletype: scramble.get_type()
-				});
+				if (core.get("timingMode") == "alg") {
+					algSets.addTime(core.get("algCountingData"), (endTime - startTime));
+					algSets.practiseUpdateLeft();
+				} else {
+					core.get("config").timeList[core.get("config").currentSession].push({
+						//We won't land here before a solve was done, as currentStage is initialized
+						//as 0 and we increment it by 1 before executing this case
+						startTime: startTime + 1,
+						endTime: endTime,
+						currentInspection: (startTime - currentInspection),
+						zeit: (endTime - startTime),
+						penalty: ((startTime - currentInspection) > 14999 ? 2000 : 0),
+						flags: {
+							fake: fake,
+							uwr: false,
+							overinspect: (startTime - currentInspection) > 14999
+						},
+						scramble: scramble.getScramble(),
+						scrambletype: scramble.get_type()
+					});
 
-				//Timer has been stopped, update stuff
-				scramble.neu();
-				scramble.draw();
-				stats.update();
-				layout.write("TIME", math.format(endTime - startTime));
-				stats.showBig(core.get("config").timeList[core.get("config").currentSession].length - 1);
+					//Timer has been stopped, update stuff
+					scramble.neu();
+					scramble.draw();
+					stats.update();
+					layout.write("TIME", math.format(endTime - startTime));
+					stats.showBig(core.get("config").timeList[core.get("config").currentSession].length - 1);
+				}
 
 				//Reset internal timer
 				startTime = 0;
@@ -115,7 +121,7 @@ var counter = (function() {
 	 */
 	function updateTime() {
 		if (core.get("running")) {
-			if (core.get("timingMode") == "up")
+			if (core.get("timingMode") == "up" || core.get("timingMode") == "alg")
 				layout.write("TIME", math.format(+new Date() - startTime));
 			else if (core.get("timingMode") == "down")
 				layout.write("TIME", math.format(36e5 - (+new Date() - startTime)));

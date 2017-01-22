@@ -52,10 +52,11 @@ var algSets = (function() {
 				"<span onclick='algSets.changeAlg (" + i + ")'>" + sets[currentSet][i].alg + "</span>",
 				"Flags",
 				"x",
-				"<span onclick='algSets.toggleStar(" + i + ");'>" + (sets[currentSet][i].flags.star ? "star" : "no star") + "</span>",
+				"<span onclick='algSets.toggleStar(" + i + ");'>" + (sets[currentSet][i].flags.star ? "Unfavorite" : "Favorite") + "</span>",
 				"<span onclick='algSets.invert(" + i + ")'>invert</span>",
-				"learn",
-				"practise",
+				//"learn",
+				sets[currentSet][i].practiseTimes.length > 0 ? math.format(math.average(sets[currentSet][i].practiseTimes)) + "s" : "DNF",
+				"<span onclick='algSets.enterPractiseMode(" + currentSet + "," + i + ")'>practise</span>",
 				"<span onclick='algSets.algCubingNet(" + i + ")'>view</span>",
 				"help"
 			);
@@ -119,7 +120,8 @@ var algSets = (function() {
 				alg: math.decompressAlgorithm(algS[i]),
 				flags: {
 					star: false
-				}
+				},
+				practiseTimes: []
 			});
 		}
 
@@ -135,7 +137,8 @@ var algSets = (function() {
 			alg: prompt("Alg"),
 			flags: {
 				star: false
-			}
+			},
+			practiseTimes: []
 		});
 		display();
 	}
@@ -218,6 +221,51 @@ var algSets = (function() {
 		layout.write("ALGSETS", JSON.stringify(favalgs));
 	}
 
+	/*
+	 * algSets:addTime(where,time)
+	 * @param where
+	 * @param time Int time in ms
+	 */
+	function addTime(where, time) {
+		sets[where[0]][where[1]].practiseTimes.push({
+			zeit: time,
+			penalty: 0
+		});
+	}
+
+	/*
+	 * algSets:enterPractiseMode(i,j)
+	 * @param i Int
+	 * @param j Int
+	 */
+	function enterPractiseMode(i, j) {
+		core.set("timingMode", "alg");
+		core.set("algCountingData", [i, j]);
+		scramble.switchScrambler("ALG ");
+		Mousetrap.trigger("a c");
+	}
+
+	/*
+	 * algSets:practiseUpdateLeft()
+	 */
+	function practiseUpdateLeft() {
+		var times = algSets.sets[core.get("algCountingData")[0]][core.get("algCountingData")[1]].practiseTimes,
+			code = html.tr("Id", transl("Time"), "Mo3", "Ao5"),
+			i;
+
+		for (i = 0; i < times.length; ++i) {
+			//We build a table row containing id, time, current mo3 and current ao5
+			code += html.tr(
+				(i + 1),
+				math.formatPenalty(times[i]),
+				i > 1 ? math.format(math.mean([times[i], times[i - 1], times[i - 2]])) : "-",
+				i > 3 ? math.format(math.average([times[i], times[i - 1], times[i - 2], times[i - 3], times[i - 4]])) : "-"
+			); //.insert(3, " onclick='stats.showBig(" + i + ")'"); //For detailed solve information later on
+		}
+		code = html.table(code);
+		layout.write("TIMELIST", code);
+	}
+
 	return {
 		init: init,
 		display: display,
@@ -232,6 +280,10 @@ var algSets = (function() {
 		toggleStar: toggleStar,
 		invert: invert,
 		algCubingNet: algCubingNet,
-		favorite: favorite
+		favorite: favorite,
+		addTime: addTime,
+		enterPractiseMode: enterPractiseMode,
+		sets: sets,
+		practiseUpdateLeft: practiseUpdateLeft
 	}
 })();
