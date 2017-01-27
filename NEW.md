@@ -127,3 +127,11 @@ Everything else
 - TTW-Like things
 - Clock should have no +2
 - Merge Sessions
+- Collect anonymous user data about on which events they use inspection
+- Allow users to share custom algSets
+
+Shared algSets
+--------------
+- Users can vote for sets, reaching 100 votes imports the set into all new loaded HTTimers
+- Users can flag algs for not working, or propose better algs
+- Algs can be upvoted and downvoted

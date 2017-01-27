@@ -241,8 +241,22 @@ var algSets = (function() {
 	function enterPractiseMode(i, j) {
 		core.set("timingMode", "alg");
 		core.set("algCountingData", [i, j]);
+		core.set("algTmpScrambleType", sessions.current().scrambleType);
 		scramble.switchScrambler("ALG ");
 		Mousetrap.trigger("a c");
+		document.getElementById("timingModeRevert").innerHTML = `<span onclick='algSets.leavePractiseMode();'>&nbsp;back</span>`;
+	}
+
+	/*
+	 * algSets:leavePractiseMode()
+	 */
+	function leavePractiseMode() {
+		core.set("timingMode", "up");
+		Mousetrap.trigger("a a");
+		document.getElementById("timingModeRevert").innerHTML = "";
+		sessions.current().scrambleType = core.get("algTmpScrambleType");
+		sessions.switchS(core.get("config").currentSession + 1);
+		sessions.switchS(core.get("config").currentSession);
 	}
 
 	/*
@@ -283,6 +297,7 @@ var algSets = (function() {
 		favorite: favorite,
 		addTime: addTime,
 		enterPractiseMode: enterPractiseMode,
+		leavePractiseMode: leavePractiseMode,
 		sets: sets,
 		practiseUpdateLeft: practiseUpdateLeft
 	}
