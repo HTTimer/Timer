@@ -560,9 +560,9 @@ if (typeof scramblers === "undefined") {
 		})();
 	}
 	scramblers["222"] = generate_NNN_scrambler(2, 11, true);
-	scramblers["333bf"] = scramblers["333"] = generate_NNN_scrambler(3, 20, true);
-	scramblers["444bf"] = scramblers["444"] = generate_NNN_scrambler(4, 40, true);
-	scramblers["555bf"] = scramblers["555"] = generate_NNN_scrambler(5, 60, true);
+	scramblers["333"] = generate_NNN_scrambler(3, 20, true);
+	scramblers["444"] = generate_NNN_scrambler(4, 40, true);
+	scramblers["555"] = generate_NNN_scrambler(5, 60, true);
 	scramblers["666"] = generate_NNN_scrambler(6, 70, true);
 	scramblers["777"] = generate_NNN_scrambler(7, 100, true);
 

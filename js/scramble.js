@@ -186,12 +186,12 @@ var scramble = (function() {
 				["Skewb", "Skewb", "Skewb", "SkewbSledge", "SkewbCO"]
 			],
 			[ //6 axis
-				["2x2", "222", "222", "222RU", "222R2U", "222RUFDBL", "222sh", "BLD", "222BLDROM", "222T"],
+				["2x2", "222jsss", "222", "222RU", "222R2U", "222RUFDBL", "222sh", "BLD", "222BLDROM", "222T"],
 				["3x3", "333jsss", "333", "333RU", "333RUF", "333RUL", "333sh", "333BLD", "333BLDROM", "333T", "333Co", "333HCo"],
-				["4x4", "444", "444", "444RrUu", "555Eo", "444sh", "444BLD", "444BLDROM", "444T", "444Su"],
-				["5x5", "555", "555", "555RrUu", "555Eo", "555sh", "555BLD", "555BLDROM", "555Co"],
-				["6x6", "666", "666", "666Eo", "666sh", "666BLD", "666BLDROM", "666Su"],
-				["7x7", "777", "777", "777Eo", "777sh", "777BLD", "777BLDR", "777Co"]
+				["4x4", "444jsss", "444", "444RrUu", "555Eo", "444sh", "444BLD", "444BLDROM", "444T", "444Su"],
+				["5x5", "555jsss", "555", "555RrUu", "555Eo", "555sh", "555BLD", "555BLDROM", "555Co"],
+				["6x6", "666jsss", "666", "666Eo", "666sh", "666BLD", "666BLDROM", "666Su"],
+				["7x7", "777jsss", "777", "777Eo", "777sh", "777BLD", "777BLDR", "777Co"]
 			],
 			[ //12 axis
 				["Helicopter", "HeliJumb", "Heli"],
@@ -405,13 +405,18 @@ var scramble = (function() {
 		} else if (type.split(" ")[0] == "ALG") {
 			//Custom scrambler for practising Algsets
 			definition = [ret, [algSets.sets[core.get("algCountingData")[0]][core.get("algCountingData")[1]].alg]];
+		} else if (type == "777jsss") {
+			definition = scrambleImagescrambler("777");
+		} else if (type == "666jsss") {
+			definition = scrambleImagescrambler("666");
+		} else if (type == "555jsss") {
+			definition = scrambleImagescrambler("555");
+		} else if (type == "444jsss") {
+			definition = scrambleImagescrambler("444");
 		} else if (type == "333jsss") {
-			scramblers["333"].scramble();
-			scramblers["333"].imagestring(0);
-			var newDiv = document.createElement("div");
-			scramblers["333"].drawScramble(newDiv, scramblers["333"].posit, 250, 200);
-			layout.write("SCRAMBLEIMAGE", newDiv.innerHTML);
-			return scramblers["333"].scramblestring(0);
+			definition = scrambleImagescrambler("333");
+		} else if (type == "222jsss") {
+			definition = scrambleImagescrambler("222");
 		}
 		//Draw image
 		if (type in ["333", "222", "444", "555"]) {
@@ -429,6 +434,15 @@ var scramble = (function() {
 		return cur_scramble;
 
 		//return edgescramble("r b2",["b2 r'","b2 U2 r U2 r U2 r U2 r"],["u"],30);
+	}
+
+	function scrambleImagescrambler(s) {
+		scramblers[s].scramble();
+		scramblers[s].imagestring(0);
+		var newDiv = document.createElement("div");
+		scramblers[s].drawScramble(newDiv, scramblers[s].posit, 250, 200);
+		layout.write("SCRAMBLEIMAGE", newDiv.innerHTML);
+		return [ret, [scramblers[s].scramblestring(0)]];
 	}
 
 	/*
