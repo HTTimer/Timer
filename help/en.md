@@ -1,4 +1,20 @@
-HTTimer help file
+HTTimer help file (v4.3.0A+)
+==
+
+Explanations
+==
+
+What is the Setup?
+--
+
+In the setup dialog you can select sessions which will be created for you. Each session will have the correct scramble, timingMode, name and inspection time. The setup dialog is shown at the first start or when a new user is created.
+
+What is the user select dialog?
+--
+
+If you load HTTimer and have multiple users, you are prompted to select the user you want to do solves on.
+
+Instructions
 ==
 
 Do a solve

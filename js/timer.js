@@ -101,6 +101,8 @@ timer = (function() {
 			currentSession: 0
 		};
 
+		//Apply stylesheet with general style
+		layout.setTheme(0);
 		//Set some variables
 		//Set variables using core.set (and core.get to get them) are NOT const and will be exported.
 		core.set("running", false);
@@ -159,6 +161,9 @@ timer = (function() {
 		for (i = 0; i < WCA_EVENTS.length; ++i)
 			html += "<input type='checkbox' id='setup-event-" + i + "' checked/>" + WCA_EVENTS[i] + "<br/>";
 		layout.write("SETUP", html);
+
+		//Initialize scrambler
+		scramblers["333"].initialize();
 	}
 
 	/*
@@ -167,7 +172,7 @@ timer = (function() {
 	 */
 	function setup() {
 		const WCA_EVENTS = ["2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7", "Pyraminx", "Megaminx", "3x3x3 Onehanded", "3x3x3 BLD", "4x4x4 BLD", "5x5x5 BLD", "3x3x3 MBLD", "Square-1", "Skewb", "3x3x3 Fewest moves"];
-		const WCA_SCRAMBLER = ["222", "333", "444", "555", "666sh", "777sh", "Pyra", "Mega", "333", "333", "444", "555", "333", "Square1", "Skewb", "333"];
+		const WCA_SCRAMBLER = ["222", "333jsss", "444", "555", "666sh", "777sh", "Pyra", "Mega", "333", "333", "444", "555", "333", "Square1", "Skewb", "333"];
 		var i;
 		for (i = 0; i < WCA_EVENTS.length; ++i) {
 			if (document.getElementById("setup-event-" + i).checked) {

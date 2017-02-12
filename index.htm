@@ -2,6 +2,18 @@
 <html>
 	<head>
 		<title>HTTimer - the best cubing timer in the world</title>
+
+		<meta charset="utf-8" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="expires" content="86400" />
+		<meta name="author" content="YTCuber" />
+		<meta name="keywords" lang="en" content="online,best,cubing,timer,httimer,ht,rubik,rubiks,cube,timing,software,YTCuber" />
+		<meta name="keywords" lang="de" content="online,best,cubing,timer,httimer,ht,rubik,rubiks,cube,timing,software,YTCuber,zeit,mess,messen" />
+		<meta name="description" content="HTTimer is a professional speedcubing timer" />
+		<meta name="robots" content="index,follow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+
 		<script src="js/error.js"></script>
 		<script src="js/core.js"></script>
 		<script src="js/math.js"></script>
@@ -20,11 +32,21 @@
 		<script src="js/cmd.js"></script>
 		<script src="js/progress.js"></script>
 		<script src="js/server.js"></script>
+		<script src="css/timer.js"></script>
 
-		<meta name="author" content="YTCuber"/>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<script src="js/jsss/scramble_NNN.js"></script>
+		<!--
+		<script src="js/jsss/scramble_sq1.js"></script>
+		<script src="js/jsss/scramble_minx.js"></script>
+		<script src="js/jsss/scramble_clock.js"></script>
+		<script src="js/jsss/scramble_pyram.js"></script>
+		-->
+		<script src="js/jsss/lib/raphael-min.js"></script>
 
+		<!--
+		Don't include timer.css as we included css/timer.js to allow client-side css editing
 		<link rel="stylesheet" type="text/css" href="css/timer.css"/>
+		-->
 		<style></style>
 	</head>
 	<body onload="timer.init();">
@@ -42,6 +64,7 @@
 			<div class="component component-right">
 				<div class="SESSIONSELECT"></div>
 				<div class="STATS"></div>
+				<div class="SCRAMBLEIMAGE"></div>
 			</div>
 			<div class="component component-middle">
 				<div class="TIME"></div>
@@ -63,7 +86,6 @@
 			<div class="options STATISTICS"></div>
 			<!--
 			Components addable to the timer, normally hidden, with absolute positioning, but not full size
-			Bee bee bee!
 			-->
 			<div class="STACKMAT hidden" id="stackmat-base"><!-- @TODO add option for hidden -->
 				<img src="https://lh4.ggpht.com/WDeNuUqNfaI5w2GxL2JaMpVJcdZRLA2hPadVbP_d8p4Cwh8qXUveEvVQC9HAVq30zmvS=w300" width="180" id="stackmat-left" onclick="javascript:if(timer.running){stop();}else{start()};"/>
@@ -97,13 +119,6 @@
 			HTTimer can setup your data to save time when actually using it. Select, for which events you want to have a session. Each session will have the correct scrambler and inspection time. FMC sessions will get a 60 minute counter.
 			<br/>
 			<div class="SETUP"></div>
-			<!--<br/>
-			<h3>Setup languages</h3>
-			Select your language:<br/>
-			<select>
-				<option onclick="translate.currentLanguage='EN';">English</option>
-				<option onclick="translate.currentLanguage='DE';">German</option>
-			</select>-->
 			<br/><br/>
 			<div style="width:80%;">
 				<button class="half-width" onclick='timer.setup();document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Setup</button>

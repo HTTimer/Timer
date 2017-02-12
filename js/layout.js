@@ -14,13 +14,7 @@ var layout = (function() {
 	 * layout:dispay()
 	 */
 	function display() {
-		layout.write("LAYOUT", `
-			<div class='component component-left'>Left: Timelist</div>
-			<div class='component component-right'>Right: Statistics|Sessionselect</div>
-			<div class='component component-top'>Top: Scramble|Scrambletools</div>
-			<div class='component component-bottom'>Bottom: Select</div>
-			<div class='component component-logo'>Logo: Logo</div>
-			<div class='component component-middle'>Middle: Time</div>`);
+		layout.write("LAYOUT", `Theme settings `);
 	}
 
 	/*
@@ -32,33 +26,46 @@ var layout = (function() {
 	}
 
 	/*
-	 * layout:setColor(color1,color2,color3,color4)
+	 * layout:setTheme(id)
 	 * Changes the color of several parts of the timer
-	 * Also has predefined themes in orange,green,blue,grey.
+	 * var themes contains colors for predefined themes in white, yellow, orange, green, blue
 	 */
 
 	var themes = [
-		["#FF6F00", "#FF8F00", "#000000", "#e65100"],
-		["#33691e", "#FF8B2F", "#000000", "#2B5E20"],
-		["#1565c0", "#0d47a1", "#000000", "#1A237E"],
-		["#212121", "#424242", "#FFFFFF", "#000000"]
+		[
+			["WHITE", "FFF"],
+			["COMPONENTBACKGROUND", "F5F5F5"],
+			["MAINCOLOR", "CCC"],
+			["LIGHTFONT", "444444"]
+		],
+		[
+			["WHITE", "FFF"],
+			["COMPONENTBACKGROUND", "FFFF00"],
+			["MAINCOLOR", "DDDD00"],
+			["LIGHTFONT", "555555"]
+		],
+		[
+			["WHITE", "FFF"],
+			["COMPONENTBACKGROUND", "FFA500"],
+			["MAINCOLOR", "EEBB11"],
+			["LIGHTFONT", "444443"]
+		],
+		[
+			["WHITE", "FFF"],
+			["COMPONENTBACKGROUND", "AAEE00"],
+			["MAINCOLOR", "44DD33"],
+			["LIGHTFONT", "232323"]
+		],
+		[
+			["WHITE", "EEE"],
+			["COMPONENTBACKGROUND", "3333BB"],
+			["MAINCOLOR", "1111EE"],
+			["LIGHTFONT", "444443"]
+		]
 	];
 
-	function setColor(color1, color2, color3, color4) {
-		//Write color1 as background-color to top,left,right
-		document.getElementsByClassName("component-right")[0].style.backgroundColor = color1;
-		document.getElementsByClassName("component-top")[0].style.backgroundColor = color1;
-		document.getElementsByClassName("component-left")[0].style.backgroundColor = color1;
-		//Write color2 as background-color of select,option and button
-		document.querySelectorAll("style")[0].innerHTML = "select,button,option{background-color:" + color2 + " !important;}";
-		//Write color3 as font color
-		document.querySelectorAll("style")[0].innerHTML += "body{color:" + color3 + " !important;}";
-		//Write color4 as font color for the middle component
-		document.querySelectorAll("style")[0].innerHTML = ".component-middle{color:" + color4 + " !important;}";
-	}
-
 	function setTheme(id) {
-		setColor(themes[id][0], themes[id][1], themes[id][2], themes[id][3]);
+		style.convert(themes[id], themes[0]);
 	}
 
 	/*
@@ -82,7 +89,6 @@ var layout = (function() {
 		display: display,
 		setFullLayout: setFullLayout,
 		write: write,
-		setColor: setColor,
 		setTheme: setTheme
 	}
 })();

@@ -10,6 +10,13 @@ New
 TODO
 ====
 
+Fast:
+- Fix options
+- Layout color change
+
+
+Slow:
+
 Goals
 -----
 - Disable Goal

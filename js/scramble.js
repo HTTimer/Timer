@@ -10,7 +10,7 @@ var scramble = (function() {
 	 * Set default scrambler type
 	 */
 	function init() {
-		type = "333";
+		type = "333jsss";
 	}
 
 	/*
@@ -187,7 +187,7 @@ var scramble = (function() {
 			],
 			[ //6 axis
 				["2x2", "222", "222", "222RU", "222R2U", "222RUFDBL", "222sh", "BLD", "222BLDROM", "222T"],
-				["3x3", "333", "333", "333RU", "333RUF", "333RUL", "333sh", "333BLD", "333BLDROM", "333T", "333Co", "333HCo"],
+				["3x3", "333jsss", "333", "333RU", "333RUF", "333RUL", "333sh", "333BLD", "333BLDROM", "333T", "333Co", "333HCo"],
 				["4x4", "444", "444", "444RrUu", "555Eo", "444sh", "444BLD", "444BLDROM", "444T", "444Su"],
 				["5x5", "555", "555", "555RrUu", "555Eo", "555sh", "555BLD", "555BLDROM", "555Co"],
 				["6x6", "666", "666", "666Eo", "666sh", "666BLD", "666BLDROM", "666Su"],
@@ -305,7 +305,7 @@ var scramble = (function() {
 		//generated, the fitting one was chosen and all others were thrown away. Now, only
 		//the necceccary ones are generated, which is much faster and efficient => faster.
 
-		var defaultScrambler = "333";
+		var defaultScrambler = "333jsss";
 
 		var cubicSuffix = ["", "'", "2"],
 			pyraSuffix = ["", "'"],
@@ -405,6 +405,18 @@ var scramble = (function() {
 		} else if (type.split(" ")[0] == "ALG") {
 			//Custom scrambler for practising Algsets
 			definition = [ret, [algSets.sets[core.get("algCountingData")[0]][core.get("algCountingData")[1]].alg]];
+		} else if (type == "333jsss") {
+			scramblers["333"].scramble();
+			scramblers["333"].imagestring(0);
+			var newDiv = document.createElement("div");
+			scramblers["333"].drawScramble(newDiv, scramblers["333"].posit, 250, 200);
+			layout.write("SCRAMBLEIMAGE", newDiv.innerHTML);
+			return scramblers["333"].scramblestring(0);
+		}
+		//Draw image
+		if (type in ["333", "222", "444", "555"]) {
+			//1. Convert scramble to code
+			//2. Call scrambler2image lib
 		}
 
 		//Call scramble function
