@@ -26,7 +26,7 @@ var options = (function() {
 		core.set("optUseMilliseconds", true);
 		core.set("optHideScrambleWhenTiming", false);
 
-		core.set("optHideScrambleBar", true);
+		core.set("optHideScrambleBar", false);
 
 		core.set("optUseInspection", true);
 

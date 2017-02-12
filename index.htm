@@ -41,11 +41,13 @@
 		<script src="js/jsss/scramble_clock.js"></script>
 		<script src="js/jsss/scramble_pyram.js"></script>
 		-->
-		<script src="js/jsss/lib/raphael-min.js"></script>
+		<script src="js/raphael.min.js"></script>
 
 		<!--
-		Don't include timer.css as we included css/timer.js to allow client-side css editing
+		Don't include timer.css as we included css/timer.js to allow client-side css editing.
 		<link rel="stylesheet" type="text/css" href="css/timer.css"/>
+
+		We must define a <style> Element for JS to write the style into.
 		-->
 		<style></style>
 	</head>
@@ -128,12 +130,10 @@
 
 		<noscript>
 			<script>
+				//This should never get executed.
 				alert("Please check your browser!");
 			</script>
 			Please enable Javascript.
-			<!--https://davidwalsh.name/supporting-internet-explorer
-	R2 F2 U2 R F U2 F R' U2 R2 U' 1.272
-		-->
 		</noscript>
 	</body>
 </html>

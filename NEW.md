@@ -1,21 +1,7 @@
-New
-===
-
-- Multi-Stage timing
-- Scramble for 666 and 777
-- Save scramble with time
-- Text-based mode
-- Set penalty for overinspecting
-
 TODO
 ====
-
-Fast:
 - Fix options
 - Layout color change
-
-
-Slow:
 
 Goals
 -----
@@ -142,3 +128,8 @@ Shared algSets
 - Users can vote for sets, reaching 100 votes imports the set into all new loaded HTTimers
 - Users can flag algs for not working, or propose better algs
 - Algs can be upvoted and downvoted
+
+Other
+-----
+https://davidwalsh.name/supporting-internet-explorer
+R2 F2 U2 R F U2 F R' U2 R2 U' 1.272s

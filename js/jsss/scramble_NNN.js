@@ -538,14 +538,9 @@ if (typeof scramblers === "undefined") {
 				}
 			};
 
-
-			/* mark2 interface */
 			return {
-				version: "July 05, 2015",
+				version: "July 05, 2015, modified February 12, 2017",
 				initialize: initializeFull,
-				setRandomSource: function() {
-					console.log("setRandomSource is deprecated. It has no effect anymore.")
-				},
 				getRandomScramble: getRandomScramble,
 				drawScramble: drawScramble,
 				scramble: scramble,
@@ -556,7 +551,6 @@ if (typeof scramblers === "undefined") {
 				scramblestring: scramblestring,
 				generate_NNN_scrambler: generate_NNN_scrambler
 			};
-
 		})();
 	}
 	scramblers["222"] = generate_NNN_scrambler(2, 11, true);
@@ -565,5 +559,4 @@ if (typeof scramblers === "undefined") {
 	scramblers["555"] = generate_NNN_scrambler(5, 60, true);
 	scramblers["666"] = generate_NNN_scrambler(6, 70, true);
 	scramblers["777"] = generate_NNN_scrambler(7, 100, true);
-
 })();
