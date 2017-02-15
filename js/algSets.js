@@ -30,7 +30,7 @@ var algSets = (function() {
 	 * algSets:display()
 	 */
 	function display() {
-		var i, outhtml = html.td("<span onclick='algSets.favorite()'>Favorites (starred)</span>"),
+		var i, outhtml = html.td("<span onclick='algSets.favorite()'>Favorites</span>"),
 			outhtml2 = "";
 
 		//Menu
@@ -63,7 +63,7 @@ var algSets = (function() {
 		}
 		outhtml += html.table(outhtml2);
 		outhtml += "<br/><button onclick='algSets.addSet()'>" + transl("Add set") + "</button>";
-		outhtml += "     <button onclick='algSets.addSet()'>" + transl("Add set") + " (Algdb.net)</button>"
+		outhtml += "     <button onclick='algSets.importSet()'>" + transl("Add set") + " (Import code)</button>"
 		outhtml += "<br/><button onclick='algSets.removeSet()'>" + transl("Remove current set") + "</button>";
 
 		layout.write("ALGSETS", outhtml);
@@ -93,6 +93,14 @@ var algSets = (function() {
 	 */
 	function removeSet(i) {
 		display();
+	}
+
+	/*
+	 * algSets:importSet()
+	 */
+	function importSet() {
+		predefined["c"] = prompt();
+		loadPredefinedAlgSet("c");
 	}
 
 	/*
@@ -210,7 +218,7 @@ var algSets = (function() {
 	 * algSets:favorite()
 	 */
 	function favorite() {
-		var html = "",
+		var html = "<span onclick='algSets.display();'>back</span><br/>",
 			i, j, favalgs = [];
 		for (i = 0; i < sets.length; ++i) {
 			for (j = 0; j < sets[i].length; ++j) {
@@ -218,7 +226,12 @@ var algSets = (function() {
 					favalgs.push(sets[i][j]);
 			}
 		}
-		layout.write("ALGSETS", JSON.stringify(favalgs));
+
+		//The algs are stored in favalgs
+		for (i = 0; i < favalgs.length; ++i) {
+			html += favalgs[i].name + ": " + favalgs[i].alg + "<br/>";
+		}
+		layout.write("ALGSETS", html);
 	}
 
 	/*
@@ -284,6 +297,7 @@ var algSets = (function() {
 		init: init,
 		display: display,
 		addSet: addSet,
+		importSet: importSet,
 		loadPredefinedAlgSet: loadPredefinedAlgSet,
 		addAlg: addAlg,
 		removeSet: removeSet,

@@ -130,6 +130,7 @@ var math = (function() {
 		for (i = 0; i < nrofPlus; ++i) ret += "+";
 		return ret;
 	}
+
 	/*
 	 * math:algInvert(alg,type)
 	 * @param alg String algorithm
@@ -139,10 +140,11 @@ var math = (function() {
 		var i, out = [];
 		alg = alg.split(" ");
 		for (i = 0; i < alg.length; ++i) {
-			out.unshift(alg[i][alg[i].length - 1] == "'" ? alg[i][0] : alg[i] + "'");
+			out.unshift(alg[i][alg[i].length - 1] == "'" ? alg[i][0] : (alg[i][alg[i].length - 1] == "2" ? alg[i] : alg[i][0] + "'"));
 		}
 		return out.join(' ');
 	}
+
 	/*
 	 * math:applyPenalty(time,p)
 	 * @param time time in ms, <0 for DNF(-time)

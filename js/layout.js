@@ -27,6 +27,7 @@ var layout = (function() {
 
 	/*
 	 * layout:setTheme(id)
+	 * @param id Int
 	 * Changes the color of several parts of the timer
 	 * var themes contains colors for predefined themes in white, yellow, orange, green, blue
 	 */
@@ -70,6 +71,8 @@ var layout = (function() {
 
 	/*
 	 * layout:write
+	 * @param where String document class name
+	 * @param what String what to write into those elements
 	 *
 	 * Source: https://stackoverflow.com/questions/11489716/how-to-use-innerhtml-with-class#answer-11489731
 	 * Is modified to accept where and what and reformatted

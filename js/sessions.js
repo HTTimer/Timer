@@ -39,14 +39,17 @@ var sessions = (function() {
 		switch (scramble.get_type()) {
 			case "222":
 			case "222sh":
+			case "222jsss":
 				method = ["LbL", "Verasano", "CLL", "EG", "TCLL", "Guimond", "OFOTA", "VOP", "SS"];
 				break;
 			case "333":
 			case "333sh":
+			case "333jsss":
 				method = ["CFOP", "LbL", "Roux", "Petrus", "ZZ", "Heise", "Synder", "SSC", "Briggs2", "Waterman", "Tripod", "L2L", "CFCE", "FreeFop", "8355", "Keyhole", "XG", "Samsara", "Sandwich", "TICT", "Belt", "Salvia", "Triangular Franscisco", "Hahn", "Human Thistlethwaite"];
 				break;
 			case "444":
 			case "444sh":
+			case "444jsss":
 				method = ["LbL", "Yau", "Redux", "HoYa", "Cage", "K4", "Z4", "Sandwich", "Js4", "Meyer", "Stadler", "Columns"];
 				break;
 			case "555":
@@ -55,6 +58,9 @@ var sessions = (function() {
 			case "666sh":
 			case "777sh":
 			case "555sh":
+			case "555jsss":
+			case "666jsss":
+			case "777jsss":
 				method = ["Redux", "LbL", "Yau5", "HoYa", "Cage", "Meyer", "OBLBL"];
 				break;
 			case "Mega":

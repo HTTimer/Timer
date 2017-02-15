@@ -122,7 +122,7 @@ timer = (function() {
 			}
 		}
 
-		layout.write("BOTTOMMENU", `<div class="bottom-menu" onclick="Mousetrap.trigger('o');"><span class="keycodes">o o (open)/o c (close)</span> Options</div>
+		layout.write("BOTTOMMENU", `<div class="bottom-menu" onclick="Mousetrap.trigger('o o');"><span class="keycodes">o o (open)/o c (close)</span> Options</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('g g');"><span class="keycodes">g g (open) g c (close)</span> Goals</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('a a');"><span class="keycodes">a a/a c</span> AlgSets</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('i i');"><span class="keycodes">i i/i c</span> Import/Export</div>

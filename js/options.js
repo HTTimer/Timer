@@ -1,5 +1,6 @@
 /*
  * options.js
+ * only change things in draw
  */
 
 var options = (function() {
@@ -7,33 +8,62 @@ var options = (function() {
 	 * options:Init()
 	 */
 	function init() {
+		//Add categories. Each one is represented with its own tab.
 		addCategory("Display");
 		addCategory("Timer");
 		addCategory("Layout");
 		addCategory("Scramble");
 		addCategory("Statistics");
 
+		//Add Options to the categories.
 		addOption(0, "Hide scramble when timing", 1, ["core.set('optHideScrambleWhenTiming',true)", "core.set('optHideScrambleWhenTiming',false)", false]);
 		addOption(0, "Show milliseconds", 1, ["core.set('optUseMilliseconds',true)", "core.set('optUseMilliseconds',false)", true]);
 
 		addOption(2, "Show scramble select", 1, ["core.set('optHideScrambleBar',false);", "core.set('optHideScrambleBar',true);", false]);
-		addOption(2, "Show virtual stackmat timer", 1, ["document.getElementById('stackmat-base').style.display='block';", "document.getElementById('stackmat-base').style.display='none';", false]);
+		addOption(2, "Show virtual stackmat timer", 1, ["document.getElementById('stackmat-base').style.display='block';", "document.getElementById('stackmat-base').style.display='none';", true]);
+		addOption(2, "Show scramble image for NxNxN, 8>N>1", 1, ["", "", true]);
 
 		addOption(1, "Use Inspection", 1, [",", ",", true]);
 
 		addOption(3, "Default scramble type for new Session", 0, "");
 
+		//Set defaults for options. Each option key begins with "opt", followed by an uppercase letter.
 		core.set("optUseMilliseconds", true);
 		core.set("optHideScrambleWhenTiming", false);
 
 		core.set("optHideScrambleBar", false);
+		core.set("optHideScrambleImage", false);
 
 		core.set("optUseInspection", true);
 
 		core.set("optDefaultScrambleTypeForNewSession", "333");
+
+		draw();
 	}
 
 	var currentCategory = 0;
+
+	function draw() {
+		layout.write("OPTIONS", `
+		<h3>Display</h3>
+		Show milliseconds:
+			<button onclick="core.set('optUseMilliseconds',${core.get('optUseMilliseconds')?'false':'true'});options.draw();">
+				${core.get('optUseMilliseconds')?'Disable':'Enable'}</button><br/>
+		<h3>Timer</h3>
+		Show scramble select:
+			<button onclick="core.set('optHideScrambleBar',${core.get('optHideScrambleBar')?'false':'true'});options.draw();">
+				${core.get('optHideScrambleBar')?'Enable':'Disable'}</button> (generate a new scramble to see the change)<br/>
+		Show virtual stackmat timer:
+			<button onclick="document.getElementById('stackmat-base').style.display='${core.get("optHideScrambleImage")?"block":"none"}';core.set('optHideScrambleImage',${core.get('optHideScrambleImage')?'false':'true'});options.draw();">
+				${core.get('optHideScrambleImage')?'Disable':'Enable'}</button><br/>
+		<h3>Design</h3>
+		<button onclick='layout.setTheme(0)'>normal Theme</button><br/>
+		<button onclick='layout.setTheme(1)'>yellow Theme</button><br/>
+		<button onclick='layout.setTheme(2)'>orange Theme</button><br/>
+		<button onclick='layout.setTheme(3)'>green Theme</button><br/>
+		<button onclick='layout.setTheme(4)'>blue Theme</button><br/>
+		`);
+	}
 
 	/*
 	 * options:display(c)
@@ -73,6 +103,7 @@ var options = (function() {
 
 	/*
 	 * options:addCategory()
+	 * @param name String
 	 */
 	var categories = [];
 
@@ -85,6 +116,7 @@ var options = (function() {
 		init: init,
 		display: display,
 		currentCategory: currentCategory,
-		options: options
+		options: options,
+		draw: draw
 	}
 })();
