@@ -164,6 +164,7 @@ var math = (function() {
 	/*
 	 * math:lcd(s)
 	 * We need to fix the 1s width of LCD font by applying a space before it
+	 * @TODO
 	 */
 	function lcd(s) {
 		//return s.replace(1, " 1");

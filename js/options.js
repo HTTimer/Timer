@@ -61,7 +61,9 @@ var options = (function() {
 		<button onclick='layout.setTheme(1)'>yellow Theme</button><br/>
 		<button onclick='layout.setTheme(2)'>orange Theme</button><br/>
 		<button onclick='layout.setTheme(3)'>green Theme</button><br/>
-		<button onclick='layout.setTheme(4)'>blue Theme</button><br/>
+		<button onclick='layout.setTheme(4)'>blue Theme</button><br/><br/>
+		<button onclick='layout.themes[layout.themes.length-1][1][1]=prompt("Color 1 as Hex value (example: 434343)");layout.setTheme(5)'>Change color 1</button><br/>
+		<button onclick='layout.themes[layout.themes.length-1][2][1]=prompt("Color 3 as Hex value (example: 434343)");layout.setTheme(5)'>Change color 2</button><br/>
 		`);
 	}
 

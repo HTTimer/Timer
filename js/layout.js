@@ -62,6 +62,13 @@ var layout = (function() {
 			["COMPONENTBACKGROUND", "3333BB"],
 			["MAINCOLOR", "1111EE"],
 			["LIGHTFONT", "444443"]
+		],
+		//CUSTOM
+		[
+			["WHITE", "FFF"],
+			["COMPONENTBACKGROUND", "F5F5F5"],
+			["MAINCOLOR", "CCC"],
+			["LIGHTFONT", "444444"]
 		]
 	];
 
@@ -92,6 +99,7 @@ var layout = (function() {
 		display: display,
 		setFullLayout: setFullLayout,
 		write: write,
-		setTheme: setTheme
+		setTheme: setTheme,
+		themes: themes
 	}
 })();
