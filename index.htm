@@ -3,16 +3,17 @@
 	<head>
 		<title>HTTimer - the best cubing timer in the world</title>
 
+		<!-- <meta>-Tags, ordered by type and ascending-->
 		<meta charset="utf-8" />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="expires" content="86400" />
 		<meta name="author" content="YTCuber" />
+		<meta name="description" content="HTTimer is a professional speedcubing timer" />
+		<meta name="format-detection" content="telephone=no" />
 		<meta name="keywords" lang="en" content="online,best,cubing,timer,httimer,ht,rubik,rubiks,cube,timing,software,YTCuber" />
 		<meta name="keywords" lang="de" content="online,best,cubing,timer,httimer,ht,rubik,rubiks,cube,timing,software,YTCuber,zeit,mess,messen" />
-		<meta name="description" content="HTTimer is a professional speedcubing timer" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<meta name="format-detection" content="telephone=no" />
 
 		<script src="js/error.js"></script>
 		<script src="js/core.js"></script>
@@ -21,7 +22,7 @@
 		<script src="js/layout.js"></script>
 		<script src="js/translate.js"></script>
 		<script src="js/sessions.js"></script>
-		<script src="js/scramble.js"></script>
+		<script src="js/scramble/scramble.js"></script>
 		<script src="js/counter.js"></script>
 		<script src="js/stats.js"></script>
 		<script src="js/algSets.js"></script>
@@ -34,7 +35,7 @@
 		<script src="js/server.js"></script>
 		<script src="css/timer.js"></script>
 
-		<script src="js/jsss/scramble_NNN.js"></script>
+		<script src="js/scramble/scramble_NNN.js"></script>
 		<!--
 		<script src="js/jsss/scramble_sq1.js"></script>
 		<script src="js/jsss/scramble_minx.js"></script>
@@ -86,10 +87,16 @@
 			<div class="options LAYOUT"></div>
 			<div class="options COLLECTION"></div>
 			<div class="options STATISTICS"></div>
+			<div class="options SCRAMBLESELECT">
+				<div class="SCRAMBLESELECT1"></div>
+				<div class="SCRAMBLESELECT2"></div>
+				<div class="SCRAMBLESELECT3"></div>
+				<div class="SCRAMBLESELECT4"></div>
+			</div>
 			<!--
 			Components addable to the timer, normally hidden, with absolute positioning, but not full size
 			-->
-			<div class="STACKMAT hidden" id="stackmat-base"><!-- @TODO add option for hidden -->
+			<div class="STACKMAT hidden" id="stackmat-base">
 				<img src="https://lh4.ggpht.com/WDeNuUqNfaI5w2GxL2JaMpVJcdZRLA2hPadVbP_d8p4Cwh8qXUveEvVQC9HAVq30zmvS=w300" width="180" id="stackmat-left" onclick="javascript:if(timer.running){stop();}else{start()};"/>
 				<img src="https://lh4.ggpht.com/WDeNuUqNfaI5w2GxL2JaMpVJcdZRLA2hPadVbP_d8p4Cwh8qXUveEvVQC9HAVq30zmvS=w300" width="180" id="stackmat-right" onclick="javascript:if(timer.running){stop();}else{start()};"/>
 				<div id="stackmat-displays">
@@ -115,6 +122,9 @@
 			</div>
 		</div>
 
+		<!--
+		Setup dialog, shown at first start
+		-->
 		<div id="begin">
 			<h2>Welcome to HTTimer!</h2>
 			<h3>Setup Sessions</h3>

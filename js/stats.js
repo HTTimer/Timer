@@ -41,14 +41,13 @@ var stats = (function() {
 				math.formatPenalty(times[i]),
 				i > 1 ? math.format(math.mean([times[i], times[i - 1], times[i - 2]])) : "-",
 				i > 3 ? math.format(math.average([times[i], times[i - 1], times[i - 2], times[i - 3], times[i - 4]])) : "-"
-			).insert(3, " onclick='stats.showBig(" + i + ")'"); //For detailed solve information later on
+			).insert(3, " onclick='stats.showBig(" + i + ")'"); //For detailed solve information
 		}
 		code = html.table(code);
 		layout.write("TIMELIST", code);
 
-		code = "";
-		//Add Session select
 		//Statistics
+		code = "";
 		if (sessions.current().solveType != "FMC" && sessions.current().solveType != "BLD" && sessions.current().solveType != "OH BLD")
 			sizes = [1, 5, 12, 50, 100, 1000, 10000];
 		else
@@ -56,7 +55,7 @@ var stats = (function() {
 		if (sessions.current().solveType == "FT")
 			sizes.pop();
 
-		code += html.tr(transl("Statistics"), transl("Best"), transl("Current"));
+		code += html.tr(html.el("b", transl("Statistics")), html.el("b", transl("Best")), html.el("b", transl("Current")));
 		for (i = 0; i < sizes.length; ++i) {
 			code += html.tr("Mo" + sizes[i], math.format(math.bestMean(core.get("config").timeList[core.get("config").currentSession], sizes[i])), "DNF");
 		}
@@ -170,6 +169,10 @@ var stats = (function() {
 		showBig(currentBig);
 	}
 
+	/*
+	 * stats:display();
+	 * Displays the statistics
+	 */
 	function display() {
 		var solves, i, pbList, cur, outhtml;
 
@@ -201,7 +204,7 @@ var stats = (function() {
 
 		outhtml = "Generating statistics for current session with " +
 			core.get("config").timeList[core.get("config").currentSession].length +
-			" solves<br/><br/>" +
+			" solves.<br/><br/>" +
 			outhtml;
 
 		layout.write("STATISTICS", outhtml);

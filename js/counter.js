@@ -39,20 +39,23 @@ var counter = (function() {
 				core.set("running", false);
 
 				//Determine whether the solve was fake or not
+				//If adding here, sort by number
 				switch (scramble.get_type()) {
+					case "222":
+						fake = (endTime - startTime) < 2e2;
+					case "Pyra":
+					case "Skewb":
+						fake = (endTime - startTime) < 4e2;
+						break;
 					case "555":
 					case "444":
 					case "Mega":
 					case "Square1":
-						fake = (endTime - startTime) < 5e3; //(endTime-startTime) is in milliseconds
+						fake = (endTime - startTime) < 4e3;
 						break;
 					case "666":
 					case "777":
-						fake = (endTime - startTime) < 10e3;
-						break;
-					case "Pyra":
-					case "Skewb":
-						fake = (endTime - startTime) < 4e2;
+						fake = (endTime - startTime) < 1e4;
 						break;
 					default:
 						fake = (endTime - startTime) < 3e2;

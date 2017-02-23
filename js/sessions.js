@@ -67,10 +67,10 @@ var sessions = (function() {
 				method = ["Balint", "Beginner", "Westlund"];
 				break;
 			case "Pyra":
-				method = ["Petrus", "Keyhole", "WO", "Oka", "Nutella", "LbL", "IWO", "OFF", "Matthew Flay", "Half-backbone", "Backbone", "MN", "FP", "L4E", "V-First"];
+				method = ["Petrus", "Keyhole", "WO", "Oka", "Nutella", "LbL", "IWO", "OFF", "Matthew Flay", "Half-backbone", "Backbone", "MN", "FP", "L4E", "V-First", "Random moves"];
 				break;
 			case "Square1":
-				method = ["SSS1M", "Vandenbergh", "Roux", "Skwuction", "Yoleberry", "COEOCPEP"];
+				method = ["SSS1M", "Vandenbergh", "Roux", "Skwuction", "Yoleberry", "COEOCPEP", "CSP"];
 				break;
 			case "Skewb":
 				method = ["Sarah", "Ranzha", "1 Algorithm", "Kirjava-Meep", "ITC", "Skrouxb", "Acubist's"];
@@ -84,7 +84,7 @@ var sessions = (function() {
 		else {
 			method.sort();
 			method.push("other");
-			code += "<option>" + transl("Method");
+			code += "<option>select " + transl("Method");
 			for (i = 0; i < method.length; ++i)
 				code += "<option" + (sessions.current().method == method[i] ? " selected " : " ") + "onclick='sessions.current().method=\"" + method[i] + "\";'>" + method[i];
 		}

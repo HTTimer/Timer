@@ -224,6 +224,8 @@ body {
 .SCRAMBLE {
 	font-size: 25px;
 	text-align: center;
+	max-height: 250px;
+	overflow: auto;
 }
 
 .SCRAMBLE div:nth-child(1) {
@@ -740,6 +742,14 @@ a.badge:hover, a.badge:focus {
 
 .half-width {
 	width: 49.5%;
+}
+
+.SCRAMBLESELECT > div {
+	float:left;
+}
+.SCRAMBLESELECT > div > select > option {
+	width: 15vw;
+	font-size: 15pt;
 }`;
 
 	/*
