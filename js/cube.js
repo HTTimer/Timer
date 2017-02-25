@@ -221,6 +221,7 @@ var cube = (function() {
 		document.getElementsByClassName('CUBESELECT')[0].style.display = "none";
 		cube_collection.push(getSelected());
 		display_collection();
+		sessions.display();
 	}
 
 	/*
@@ -247,6 +248,7 @@ var cube = (function() {
 		set: set,
 		close: close,
 
-		display_collection: display_collection
+		display_collection: display_collection,
+		cube_collection: cube_collection
 	}
 })();

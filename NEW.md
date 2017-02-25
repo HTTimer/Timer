@@ -1,7 +1,6 @@
 TODO
 ====
 - Fix options
-- Layout color change
 
 Goals
 -----
@@ -14,13 +13,11 @@ Login to
 - Export from Server
 - Import from Server
 - Animate algs in algSets
-- Examinx scrambler
 - FTO Scrambler
 - Import AlgSets from AlgDb
 - Use more that 10 stages
 - Predefined AlgSets: ZBLL,SummerVariation,VLS,EG1,EG2,TCLL+,TCLL-
 - Selftest, selffix
-- Submit AlgSet to HT
 
 Translate
 ---------
@@ -109,12 +106,11 @@ Tools
 Everything else
 ---------------
 - Select multiple Solves from Timelist, and apply flags,penalty,delete,... for all of them
-- Display "Select all" button, if multiple solves are selected
+- Display "Select all" button, if multiple, but not all solves are selected
 - Sort Timelist by date xor time
 - Feature Documentation
 - Help
 - How to contribute
-- Collection
 - Friends
 - Compare to Friends
 - TTW-Like things

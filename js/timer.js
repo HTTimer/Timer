@@ -96,7 +96,8 @@ timer = (function() {
 				name: transl("New Session"),
 				solveType: "normal",
 				method: "",
-				scrambleType: "333"
+				scrambleType: "333",
+				cube: [, "no cube"]
 			}],
 			currentSession: 0
 		};

@@ -84,10 +84,15 @@ var sessions = (function() {
 		else {
 			method.sort();
 			method.push("other");
-			code += "<option>select " + transl("Method");
+			code += "<option>select " + transl("Method") + "</option>";
 			for (i = 0; i < method.length; ++i)
-				code += "<option" + (sessions.current().method == method[i] ? " selected " : " ") + "onclick='sessions.current().method=\"" + method[i] + "\";'>" + method[i];
+				code += "<option" + (sessions.current().method == method[i] ? " selected " : " ") + "onclick='sessions.current().method=\"" + method[i] + "\";'>" + method[i] + "</option>";
 		}
+
+		code += "</select><br/>" +
+			"<select style='width:100%;'><option>" + sessions.current().cube[1] + "</option>";
+		for (i = 0; i < cube.cube_collection.length; ++i)
+			code += "<option onclick='sessions.current().cube=cube.cube_collection[" + i + "];'>" + cube.cube_collection[i][1] + "</option>";
 
 		code += "</select><br/><br/>";
 		layout.write("SESSIONSELECT", code);
@@ -117,7 +122,8 @@ var sessions = (function() {
 				name: transl("New Session"),
 				solveType: "normal",
 				method: "",
-				scrambleType: core.get("optDefaultScrambleTypeForNewSession")
+				scrambleType: core.get("optDefaultScrambleTypeForNewSession"),
+				cube: [, "no cube"]
 			}); //See timer.js, try to load data, do if if else, config;
 		} else {
 			core.get("config").sessionData.push({
@@ -126,7 +132,8 @@ var sessions = (function() {
 				name: arguments[2],
 				solveType: arguments[3],
 				method: arguments[4],
-				scrambleType: arguments[5]
+				scrambleType: arguments[5],
+				cube: [, "no cube"]
 			});
 		}
 
