@@ -1,6 +1,7 @@
 /*
  * timer.js - main timer file for HTTimer
- * Requires algSets.js, core.js, counter.js, error.js, goals.js, layout.js, scramble.js
+ * Requires all modules in moduleList
+ * Each module is in a file called <moduleName>.js in the folder js.
  */
 
 timer = (function() {
@@ -15,8 +16,10 @@ timer = (function() {
 	 * - Write Layout
 	 * - Initialize components
 	 */
-	var moduleList = ["algSets", "cmd", "core", "counter", "cube", "error", "goals", "html", "layout", "scramble", "stats", "keyboard", "translate"];
-	var version = "4.3.0A";
+
+	var moduleList = ["algSets", "cmd", "core", "counter", "cube", "error", "goals", "html", "layout", "scramble", "sessions", "stats", "keyboard", "translate"];
+	var version = ["4", "3", "0", "A"]; // This is the development version, the "real" version 1.0.0 starts at 4.3.0A dev.
+	version = [version[0] - 3, version[1] - 3, version[2]].join(".") + " " + version[3]; // build the real version
 
 	function init() {
 		var i, config, check, html;

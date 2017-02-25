@@ -63,8 +63,8 @@ var cube = (function() {
 				"CTO"
 			],
 			[
-				"2x2",
-				"3x3"
+				"2x2x2",
+				"3x3x3"
 			],
 			[
 				"Pyraminx",
@@ -164,6 +164,7 @@ var cube = (function() {
 				"Sailing 4x4x4",
 				"SnowLeopard",
 				"AoTiger",
+				"WuShuang",
 				"WuHua",
 				"WuJi",
 				"QiMing",

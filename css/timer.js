@@ -192,6 +192,10 @@ body {
 	border-left: none;
 }
 
+.BOTTOMMENU {
+	text-align: center;
+}
+
 .bottom-menu {
 	height: 25px;
 	width: 14.2%;
