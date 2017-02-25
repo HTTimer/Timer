@@ -23,7 +23,7 @@ var sessions = (function() {
 			code += "<option" + (i == core.get("config").currentSession ? " selected " : " ") + "onclick='sessions.switchS(" + i + ")'>" + (i + 1) + ".: " + core.get("config").sessionData[i].name;
 		}
 
-		code += "<option onclick='sessions.create();'>New</select><br/><select style='width:50%;'>";
+		code += "<option onclick='sessions.create();'>New</select><br/><select style='width:40%;'>";
 
 		//Session Event type menu
 		sessionTypes = ["2H", "OH", "OH BLD", "BLD", "FMC", "FT"];
@@ -34,7 +34,7 @@ var sessions = (function() {
 		code += "</select>";
 
 		//Method menu
-		code += "<select style='width:50%;'>";
+		code += "<select style='width:60%;'>";
 
 		switch (scramble.get_type()) {
 			case "222":
