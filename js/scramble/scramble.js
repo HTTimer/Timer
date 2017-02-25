@@ -100,7 +100,7 @@ var scramble = (function() {
 	var scrambler = [ //Innerste arrays haben erst Titel, dann scramblerliste, nur wenn length==1, dann ist erster eintrag Name und scrambler gleichzeitig
 		[ //Pyramid
 			[ //4 axis
-				["Pyraminx", "WCA", "Random State"],
+				["Pyraminx", "WCA", "Random State", "Pyraminx Duo"],
 				["Master Pyraminx", "Master Pyraminx"],
 				["Professor Pyraminx", "Professor Pyraminx"]
 			],
@@ -167,7 +167,7 @@ var scramble = (function() {
 	var scramblerTypes = [
 		[ //Pyramid
 			[ //4 axis
-				["Pyraminx", "Pyra", "Pyra"],
+				["Pyraminx", "Pyra", "Pyra", "Pyra"],
 				["Master Pyraminx", "Pyra"],
 				["Professor Pyraminx", "Pyra"]
 			],
@@ -440,7 +440,7 @@ var scramble = (function() {
 
 			//Subsets
 			"222RU": [scramble, [moves.RU, cubicSuffix, 10]],
-			"222RUFDBL": [scramble, [moves.C3, cubicSuffix], 11],
+			"222RUFDBL": [scramble, [moves.C3, cubicSuffix, 11]],
 			"333RU": [scramble, [moves.RU, cubicSuffix, 21]],
 			"333RUF": [scramble, [moves.RUF, cubicSuffix, 21]],
 			"333RUL": [scramble, [moves.RUL, cubicSuffix, 21]],
@@ -486,6 +486,7 @@ var scramble = (function() {
 		if (type in ["333", "222", "444", "555"]) {
 			//1. Convert scramble to code
 			//2. Call scrambler2image lib
+			//TODO
 		}
 
 		//Call scramble function

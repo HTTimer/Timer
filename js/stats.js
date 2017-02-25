@@ -136,7 +136,7 @@ var stats = (function() {
 
 		//Display some general data
 		code = transl("Scramble") + ": " + solve.scramble + "<br/>";
-		code += "Inspction time: " + math.format(solve.currentInspection) + "<br/>";
+		code += "Inspction time: " + math.format(solve.currentInspection) + "s<br/>";
 		code += "Start date: " + math.formatDate(solve.startTime) + "<br/>";
 		code += "End date: " + math.formatDate(solve.endTime) + "<br/>";
 		code += "<br/>";

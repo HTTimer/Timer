@@ -142,9 +142,13 @@ var counter = (function() {
 		var a;
 		if (!core.get("running")) {
 			a = ~~((15 - +new Date() + currentInspection) / -1000);
-			layout.write("TIME", "Inspect<br/>" + a + (a > 14 ? (a > 16 ? " DNF" : " +2") : ""));
+			layout.write("TIME", "Inspect<br/>" + inspectColor(a) + a + "</span>" + (a > 14 ? (a > 16 ? " DNF" : " +2") : ""));
 			setTimeout(updateInspect, 142);
 		}
+	}
+
+	function inspectColor(a) {
+		return core.get("optInspectColor") ? ("<span style='color:" + (a < 8 ? "black" : (a < 12 ? "#ff0" : (a < 15 ? "#f80" : "#f00"))) + "'>") : "<span>";
 	}
 
 	return {

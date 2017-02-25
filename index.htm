@@ -33,6 +33,7 @@
 		<script src="js/cmd.js"></script>
 		<script src="js/progress.js"></script>
 		<script src="js/server.js"></script>
+		<script src="js/cube.js"></script>
 		<script src="css/timer.js"></script>
 
 		<script src="js/scramble/scramble_NNN.js"></script>
@@ -93,6 +94,11 @@
 				<div class="SCRAMBLESELECT3"></div>
 				<div class="SCRAMBLESELECT4"></div>
 			</div>
+			<div class="options CUBESELECT">
+				<div class="CUBESELECT1"></div>
+				<div class="CUBESELECT2"></div>
+				<div class="CUBESELECT3"></div>
+			</div>
 			<!--
 			Components addable to the timer, normally hidden, with absolute positioning, but not full size
 			-->
@@ -128,11 +134,11 @@
 		<div id="begin">
 			<h2>Welcome to HTTimer!</h2>
 			<h3>Setup Sessions</h3>
-			HTTimer can setup your data to save time when actually using it. Select, for which events you want to have a session. Each session will have the correct scrambler and inspection time. FMC sessions will get a 60 minute counter.
-			<br/>
+			HTTimer can setup your data to save time when actually using it. Select, for which events you want to have a session.<br/>Each session will have the correct scrambler and inspection time. FMC sessions will get a 60 minute counter.
+			<br/><br/>
 			<div class="SETUP"></div>
 			<br/><br/>
-			<div style="width:80%;">
+			<div style="width:90%;">
 				<button class="half-width" onclick='timer.setup();document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Setup</button>
 				<button class="half-width" onclick='document.getElementById("begin").style.display="none";document.getElementById("desktop-graphic").style.display="block";'>Continue without Setup (not recommended)</button>
 			</div>

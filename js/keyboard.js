@@ -307,6 +307,7 @@ var keyboard = (function() {
 		});
 		Mousetrap.bind("m m", function() {
 			document.getElementsByClassName('COLLECTION')[0].style.display = "block";
+			cube.display_collection();
 		});
 		Mousetrap.bind("p p", function() {
 			document.getElementsByClassName('STATISTICS')[0].style.display = "block";

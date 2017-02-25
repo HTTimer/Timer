@@ -35,6 +35,7 @@ var options = (function() {
 		core.set("optHideScrambleImage", false);
 
 		core.set("optUseInspection", true);
+		core.set("optInspectColor", true);
 
 		core.set("optDefaultScrambleTypeForNewSession", "333");
 
@@ -49,6 +50,9 @@ var options = (function() {
 		Show milliseconds:
 			<button onclick="core.set('optUseMilliseconds',${core.get('optUseMilliseconds')?'false':'true'});options.draw();">
 				${core.get('optUseMilliseconds')?'Disable':'Enable'}</button><br/>
+		Color inspection time after 8, 12, 15 seconds:
+			<button onclick="core.set('optInspectColor',${core.get('optInspectColor')?'false':'true'});options.draw();">
+				${core.get('optInspectColor')?'Disable':'Enable'}</button><br/>
 		<h3>Timer</h3>
 		Show scramble select:
 			<button onclick="core.set('optHideScrambleBar',${core.get('optHideScrambleBar')?'false':'true'});options.draw();">

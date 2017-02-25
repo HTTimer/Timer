@@ -15,7 +15,7 @@ timer = (function() {
 	 * - Write Layout
 	 * - Initialize components
 	 */
-	var moduleList = ["algSets", "cmd", "core", "counter", "error", "goals", "html", "layout", "scramble", "stats", "keyboard", "translate"];
+	var moduleList = ["algSets", "cmd", "core", "counter", "cube", "error", "goals", "html", "layout", "scramble", "stats", "keyboard", "translate"];
 	var version = "4.3.0A";
 
 	function init() {
@@ -143,6 +143,7 @@ timer = (function() {
 		stats.init();
 		cmd.init();
 		options.init();
+		cube.init();
 
 		//Generate scramble and display it
 		scramble.neu();

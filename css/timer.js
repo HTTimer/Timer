@@ -750,6 +750,19 @@ a.badge:hover, a.badge:focus {
 .SCRAMBLESELECT > div > select > option {
 	width: 15vw;
 	font-size: 15pt;
+}
+
+.CUBESELECT > div {
+	float:left;
+}
+.CUBESELECT > div > select > option {
+	width: 15vw;
+	font-size: 15pt;
+}
+
+#begin {
+	margin-left: 10px;
+	margin-right: 10px;
 }`;
 
 	/*
