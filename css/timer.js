@@ -196,6 +196,11 @@ body {
 	text-align: center;
 }
 
+.LOG {
+	height: 300px;
+	overflow: auto;
+}
+
 .bottom-menu {
 	height: 25px;
 	width: 14.2%;

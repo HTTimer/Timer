@@ -30,6 +30,7 @@ var options = (function() {
 		//Set defaults for options. Each option key begins with "opt", followed by an uppercase letter.
 		core.set("optUseMilliseconds", true);
 		core.set("optHideScrambleWhenTiming", false);
+		core.set("optHideLog", true);
 
 		core.set("optHideScrambleBar", false);
 		core.set("optHideScrambleImage", false);
@@ -53,6 +54,9 @@ var options = (function() {
 		Color inspection time after 8, 12, 15 seconds:
 			<button onclick="core.set('optInspectColor',${core.get('optInspectColor')?'false':'true'});options.draw();">
 				${core.get('optInspectColor')?'Disable':'Enable'}</button><br/>
+		Show log:
+			<button onclick="document.getElementsByClassName('LOG')[0].style.display='${core.get("optHideLog")?"block":"none"}';core.set('optHideLog',${core.get('optHideLog')?'false':'true'});options.draw();">
+				${core.get('optHideLog')?'Enable':'Disable'}</button><br/>
 		<h3>Timer</h3>
 		Show scramble select:
 			<button onclick="core.set('optHideScrambleBar',${core.get('optHideScrambleBar')?'false':'true'});options.draw();">

@@ -126,6 +126,8 @@ timer = (function() {
 			}
 		}
 
+		setInterval(core.displayLog, 250);
+
 		//Write text to some places
 		layout.write("BOTTOMMENU", `<div class="bottom-menu" onclick="Mousetrap.trigger('o o');"><span class="keycodes">o o (open)/o c (close)</span> Options</div>
 			<div class="bottom-menu" onclick="Mousetrap.trigger('g g');"><span class="keycodes">g g (open) g c (close)</span> Goals</div>
